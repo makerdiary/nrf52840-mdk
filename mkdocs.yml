@@ -1,0 +1,115 @@
+
+# Project information
+site_name: nRF52840-MDK Documentation
+site_description: Micro Development Kit for IoT Applications using nRF52840 SoC
+site_author: makerdiary
+site_url: https://wiki.makerdiary.co/nrf52840-mdk/
+
+# Repository
+repo_name: makerdiary/nrf52840-mdk
+repo_url: https://github.com/makerdiary/nrf52840-mdk
+edit_uri: ""
+
+# Copyright
+copyright: 'Copyright &copy; 2018 <a href="https://makerdiary.com">makerdiary.com</a>'
+
+# Configuration
+theme:
+  name: null
+  custom_dir: 'material'
+
+  # 404 page
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  feature:
+    tabs: true
+  palette:
+    primary: marsala
+    accent: marsala
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: 'images/favicon.png'
+  logo: 'images/logo.svg'
+
+# Customization
+extra:
+  social:
+    - type: globe
+      link: https://makerdiary.com
+    - type: github-alt
+      link: https://github.com/makerdiary
+    - type: twitter
+      link: https://twitter.com/makerdiary
+    - type: facebook
+      link: https://www.facebook.com/makerdiary
+#  disqus: 'makerdiary'
+  discourse: 'community.makerdiary.co'
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Page tree
+pages:
+  - Introduction: index.md
+  - Getting Started: getting-started/index.md
+  - nRF5 SDK: nrf5-sdk/index.md
+  - nRF5 SDK for Mesh: mesh/index.md
+  - OpenThread: openthread/index.md
+  - Arm Mbed OS: mbedos/index.md
+  - Zephyr: zephyr/index.md
+  - Mynewt: mynewt/index.md
+  - DAPLink: daplink/index.md
+  - How to Buy: how-to-buy.md
+  - Contributing: CONTRIBUTING.md
+  - License: LICENSE.md
+  - 中文文档:
+    - 简介: cn/index.md
+    - 快速入门: cn/getting-started/index.md
+    - nRF5 SDK: cn/nrf5-sdk/index.md
+    - nRF5 SDK for Mesh: cn/mesh/index.md
+    - OpenThread: cn/openthread/index.md
+    - Arm Mbed OS: cn/mbedos/index.md
+    - Zephyr: cn/zephyr/index.md
+    - Mynewt: cn/mynewt/index.md
+    - DAPLink: cn/daplink/index.md
+    - 如何购买: cn/how-to-buy.md
+    - 反馈&贡献: cn/CONTRIBUTING.md
+    - License: cn/LICENSE.md  
+
+# Google Analytics
+google_analytics:
+  - 'UA-54344624-2'
+  - 'auto'
