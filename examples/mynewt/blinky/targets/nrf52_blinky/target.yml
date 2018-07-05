@@ -1,0 +1,4 @@
+### Target: targets/nrf52_blinky
+target.app: "apps/blinky"
+target.bsp: "@mynewt_nrf52840_mdk/hw/bsp/nrf52840_mdk"
+target.build_profile: "debug"
