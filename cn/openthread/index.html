@@ -1,0 +1,1635 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Micro Development Kit for IoT Applications using nRF52840 SoC">
+      
+      
+        <link rel="canonical" href="https://wiki.makerdiary.co/nrf52840-mdk/cn/openthread/">
+      
+      
+        <meta name="author" content="makerdiary">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.7.3">
+    
+    
+      
+        <title>OpenThread - nRF52840-MDK Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.8d40d89b.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.c61db26e.css">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="marsala" data-md-color-accent="marsala">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#openthread-nest-thread" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://wiki.makerdiary.co/nrf52840-mdk/" title="nRF52840-MDK Documentation" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/logo.svg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                nRF52840-MDK Documentation
+              </span>
+              <span class="md-header-nav__topic">
+                OpenThread
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/makerdiary/nrf52840-mdk" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      makerdiary/nrf52840-mdk
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Introduction" class="md-tabs__link">
+        Introduction
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../" title="中文文档" class="md-tabs__link md-tabs__link--active">
+          中文文档
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <img src="../../images/logo.svg" width="48" height="48">
+      
+    </span>
+    nRF52840-MDK Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/makerdiary/nrf52840-mdk" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      makerdiary/nrf52840-mdk
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../nrf5-sdk/" title="nRF5 SDK" class="md-nav__link">
+      nRF5 SDK
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../mesh/" title="nRF5 SDK for Mesh" class="md-nav__link">
+      nRF5 SDK for Mesh
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../openthread/" title="OpenThread" class="md-nav__link">
+      OpenThread
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../mbedos/" title="Arm Mbed OS" class="md-nav__link">
+      Arm Mbed OS
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../zephyr/" title="Zephyr" class="md-nav__link">
+      Zephyr
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../mynewt/" title="Mynewt" class="md-nav__link">
+      Mynewt
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../daplink/" title="DAPLink" class="md-nav__link">
+      DAPLink
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../how-to-buy/" title="How to Buy" class="md-nav__link">
+      How to Buy
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CONTRIBUTING/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../LICENSE/" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13" checked>
+    
+    <label class="md-nav__link" for="nav-13">
+      中文文档
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        中文文档
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started/" title="快速入门" class="md-nav__link">
+      快速入门
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nrf5-sdk/" title="nRF5 SDK" class="md-nav__link">
+      nRF5 SDK
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mesh/" title="nRF5 SDK for Mesh" class="md-nav__link">
+      nRF5 SDK for Mesh
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        OpenThread
+      </label>
+    
+    <a href="./" title="OpenThread" class="md-nav__link md-nav__link--active">
+      OpenThread
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="简介" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="快速入门" class="md-nav__link">
+    快速入门
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arm-gnu-toolchain" title="安装 ARM GNU Toolchain" class="md-nav__link">
+    安装 ARM GNU Toolchain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyocd" title="安装 pyOCD" class="md-nav__link">
+    安装 pyOCD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wpantund" title="安装 wpantund" class="md-nav__link">
+    安装 wpantund
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openthread" title="克隆 OpenThread 源码" class="md-nav__link">
+    克隆 OpenThread 源码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ncp-joiner" title="设置 NCP Joiner" class="md-nav__link">
+    设置 NCP Joiner
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ncp" title="编译下载 NCP 固件" class="md-nav__link">
+    编译下载 NCP 固件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wpantund_1" title="配置 wpantund" class="md-nav__link">
+    配置 wpantund
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ncp_1" title="验证 NCP 是否工作" class="md-nav__link">
+    验证 NCP 是否工作
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ftd" title="设置 FTD 设备" class="md-nav__link">
+    设置 FTD 设备
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cli" title="编译下载 CLI 固件" class="md-nav__link">
+    编译下载 CLI 固件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli_1" title="验证 CLI 是否工作" class="md-nav__link">
+    验证 CLI 是否工作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ftd-joiner" title="设置 FTD Joiner" class="md-nav__link">
+    设置 FTD Joiner
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread" title="建立 Thread 网络" class="md-nav__link">
+    建立 Thread 网络
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ftd-joiner_1" title="许可 FTD Joiner" class="md-nav__link">
+    许可 FTD Joiner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#udp" title="发送 UDP 消息" class="md-nav__link">
+    发送 UDP 消息
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="更多示例" class="md-nav__link">
+    更多示例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="参考资源" class="md-nav__link">
+    参考资源
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="问题反馈" class="md-nav__link">
+    问题反馈
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mbedos/" title="Arm Mbed OS" class="md-nav__link">
+      Arm Mbed OS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../zephyr/" title="Zephyr" class="md-nav__link">
+      Zephyr
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mynewt/" title="Mynewt" class="md-nav__link">
+      Mynewt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../daplink/" title="DAPLink" class="md-nav__link">
+      DAPLink
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../how-to-buy/" title="如何购买" class="md-nav__link">
+      如何购买
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CONTRIBUTING/" title="反馈&贡献" class="md-nav__link">
+      反馈&贡献
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../LICENSE/" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="简介" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="快速入门" class="md-nav__link">
+    快速入门
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arm-gnu-toolchain" title="安装 ARM GNU Toolchain" class="md-nav__link">
+    安装 ARM GNU Toolchain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyocd" title="安装 pyOCD" class="md-nav__link">
+    安装 pyOCD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wpantund" title="安装 wpantund" class="md-nav__link">
+    安装 wpantund
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openthread" title="克隆 OpenThread 源码" class="md-nav__link">
+    克隆 OpenThread 源码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ncp-joiner" title="设置 NCP Joiner" class="md-nav__link">
+    设置 NCP Joiner
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ncp" title="编译下载 NCP 固件" class="md-nav__link">
+    编译下载 NCP 固件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wpantund_1" title="配置 wpantund" class="md-nav__link">
+    配置 wpantund
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ncp_1" title="验证 NCP 是否工作" class="md-nav__link">
+    验证 NCP 是否工作
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ftd" title="设置 FTD 设备" class="md-nav__link">
+    设置 FTD 设备
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cli" title="编译下载 CLI 固件" class="md-nav__link">
+    编译下载 CLI 固件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli_1" title="验证 CLI 是否工作" class="md-nav__link">
+    验证 CLI 是否工作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ftd-joiner" title="设置 FTD Joiner" class="md-nav__link">
+    设置 FTD Joiner
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread" title="建立 Thread 网络" class="md-nav__link">
+    建立 Thread 网络
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ftd-joiner_1" title="许可 FTD Joiner" class="md-nav__link">
+    许可 FTD Joiner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#udp" title="发送 UDP 消息" class="md-nav__link">
+    发送 UDP 消息
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="更多示例" class="md-nav__link">
+    更多示例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" title="参考资源" class="md-nav__link">
+    参考资源
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="问题反馈" class="md-nav__link">
+    问题反馈
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="openthread-nest-thread">OpenThread <br><small>Nest 发布的 Thread® 的开源实现方案</small><a class="headerlink" href="#openthread-nest-thread" title="Permanent link">&para;</a></h1>
+<p><a href="https://github.com/openthread/openthread"><img alt="" src="./../../openthread/images/openthread_logo.png" /></a></p>
+<h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a href="https://openthread.io/">OpenThread</a> 是 <a href="https://nest.com/">Nest Labs</a> 发布的 <a href="http://threadgroup.org/">Thread®</a> 的开源实现方案。OpenThread 已经广泛应用于 Nest 产品中，可以帮助开发者快速开发智能家居产品。</p>
+<p><a href="http://threadgroup.org/ThreadSpec">Thread®</a> 是一种为家庭和楼宇自动化而建立的开放式标准，以实现可靠、具有成本效益和低功耗的通信：</p>
+<ul>
+<li>安全的无线网格网络协议</li>
+<li>基于 IPv6 的开放协议，支持轻松连接到现有网络</li>
+<li>支持使用智能手机轻松调试</li>
+<li>支持器件到器件、器件到移动设备和器件到云的无线通信</li>
+</ul>
+<p><img alt="" src="./../../openthread/images/openthread_intro.jpg" /></p>
+<p>本章节将介绍如何使用 nRF52840-MDK 创建一个 Thread 网络，并在不同节点间发送消息。</p>
+<p><img alt="" src="./../../openthread/images/nrf52840_mdk_openthread.jpg" /></p>
+<h2 id="_2">快速入门<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>在开发 OpenThread 应用之前，你需要安装一些开发工具。</p>
+<h3 id="arm-gnu-toolchain">安装 ARM GNU Toolchain<a class="headerlink" href="#arm-gnu-toolchain" title="Permanent link">&para;</a></h3>
+<p>GNU Arm Embedded Toolchain 是 Arm 公司提供的 GNU 开源工具链，集成 GCC 交叉编译器、标准库以及其他实用工具，使开发者能够轻松开发基于 Arm Cortex-M 和 Cortex-R 的软件。该工具支持跨平台，可以运行在 Windows，Linux 和 macOS 平台上。</p>
+<p>你可以通过以下链接下载该工具链：</p>
+<p><a href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads"><button data-md-color-primary="marsala">下载工具链</button></a></p>
+<p>下载、安装 <code>6-2017-q2-update</code> 版本，并将工具链的目录添加到系统环境变量中：</p>
+<div class="codehilite"><pre><span></span><span class="c1"># in ~/.bash_profile, add the following script</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;&lt;path to install directory&gt;/gcc-arm-none-eabi-6-2017-q2-update/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+
+<p>可通过以下命令验证是否安装成功：</p>
+<div class="codehilite"><pre><span></span>$ arm-none-eabi-gcc --version
+</pre></div>
+
+<h3 id="pyocd">安装 pyOCD<a class="headerlink" href="#pyocd" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/mbedmicro/pyOCD">pyOCD</a> 是一个开源、跨平台的 python 库，支持 Linux, macOS, Windows 系统，可对 ARM Cortex-M 系列 MCU 进行编程和调试，甚至可以利用其提供的 API 实现更复杂的功能。</p>
+<p>可以通过 <a href="https://pip.pypa.io/en/stable/index.html">pip</a> 安装最新稳定版：</p>
+<div class="codehilite"><pre><span></span>$ pip install --pre -U pyocd
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">提示</p>
+<p>如果安装 pyOCD 过程遇到问题，可以参考 “<a href="./../getting-started/#pyocd">使用 pyOCD 下载</a>” 部分。</p>
+</div>
+<h3 id="wpantund">安装 wpantund<a class="headerlink" href="#wpantund" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/openthread/wpantund">wpantund</a> 是运行在类 Unix 操作系统用户空间的网络接口驱动程序，为低功耗无线协处理器（NCP）提供本地 IPv6 网络接口，由 Nest Labs 开发和维护。</p>
+<p>你可以按照 “<a href="https://github.com/openthread/wpantund/blob/master/INSTALL.md">wpantund 安装指南</a>” 安装 <strong>wpantund</strong>。</p>
+<h3 id="openthread">克隆 OpenThread 源码<a class="headerlink" href="#openthread" title="Permanent link">&para;</a></h3>
+<p>克隆 OpenThread 源码，并安装：</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> ~
+$ git clone --recursive https://github.com/openthread/openthread.git
+$ <span class="nb">cd</span> openthread
+$ ./bootstrap
+</pre></div>
+
+<p>修改平台配置文件 <code>openthread/examples/platforms/nrf52840/platform-config.h</code> 的串口配置以适配 nRF52840-MDK：</p>
+<div class="codehilite"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @def UART_HWFC</span>
+<span class="cm"> *</span>
+<span class="cm"> * UART Hardware Flow Control.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @brief Possible values:</span>
+<span class="cm"> *         \ref NRF_UART_HWFC_ENABLED - HW Flow control enabled.</span>
+<span class="cm"> *         \ref NRF_UART_HWFC_DISABLED - HW Flow control disabled.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="cp">#ifndef UART_HWFC</span>
+<span class="cp">#define UART_HWFC NRF_UART_HWFC_DISABLED</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @def UART_PIN_TX</span>
+<span class="cm"> *</span>
+<span class="cm"> * UART TX Pin.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="cp">#ifndef UART_PIN_TX</span>
+<span class="cp">#define UART_PIN_TX 20</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @def UART_PIN_RX</span>
+<span class="cm"> *</span>
+<span class="cm"> * UART RX Pin.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="cp">#ifndef UART_PIN_RX</span>
+<span class="cp">#define UART_PIN_RX 19</span>
+<span class="cp">#endif</span>
+</pre></div>
+
+<p>完成以上准备工作，便可以开始编译下载 OpenThread。</p>
+<h2 id="ncp-joiner">设置 NCP Joiner<a class="headerlink" href="#ncp-joiner" title="Permanent link">&para;</a></h2>
+<h3 id="ncp">编译下载 NCP 固件<a class="headerlink" href="#ncp" title="Permanent link">&para;</a></h3>
+<p>Thread 网络中的设备使用 <strong>Joiner</strong> 角色可以被安全地认证和许可，这里我们将为 nRF52840-MDK 编译下载具有 <strong>Joiner</strong> 功能的固件。</p>
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>每次编译之前建议使用 <code>make clean</code> 清除前面已经编译过的版本。</p>
+</div>
+<div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> ~/openthread
+$ make -f examples/Makefile-nrf52840 clean
+$ make -f examples/Makefile-nrf52840 <span class="nv">JOINER</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+
+<div class="admonition tip">
+<p class="admonition-title">了解更多</p>
+<p>如果需要了解更多关于编译配置 OpenThread 的内容，可以参考 “<a href="https://openthread.io/guides/building/">Building OpenThread</a>”。</p>
+</div>
+<p>切换到输出目录，将 OpenThread FTD NCP 二进制文件转换为 hex 文件：</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> ~/openthread/output/nrf52840/bin
+$ arm-none-eabi-objcopy -O ihex ot-ncp-ftd ot-ncp-ftd.hex
+</pre></div>
+
+<p>将 nRF52840-MDK 连接到 PC，使用 <code>pyocd-flashtool -l</code> 获取该板子的 <code>boardId</code>:</p>
+<div class="codehilite"><pre><span></span>$ pyocd-flashtool -l
+
+WARNING:root:Unsupported board found <span class="m">1026</span>
+<span class="nv">0</span> <span class="o">=</span>&gt; Unknown Board <span class="o">[</span>cortex_m<span class="o">]</span> <span class="nv">boardId</span> <span class="o">=</span>&gt; 10260000083ab20300000000000000000000000097969902
+</pre></div>
+
+<p>使用该 <code>boardId</code> 下载前面编译完成的 OpenThread NCP FTD hex 文件：</p>
+<div class="codehilite"><pre><span></span>$ pyocd-flashtool -t nrf52 -b 10260000083ab20300000000000000000000000097969902 -ce ot-ncp-ftd.hex
+</pre></div>
+
+<p><img alt="" src="./../../openthread/images/flash_ot-ncp-ftd_hex.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>将该板子标记为 <strong>NCP</strong>，以避免与后面其他角色的设备混淆。</p>
+</div>
+<h3 id="wpantund_1">配置 wpantund<a class="headerlink" href="#wpantund_1" title="Permanent link">&para;</a></h3>
+<p>在 NCP 的设计中，使用 <code>wpantund</code> 工具来连接和管理 Thread 设备。 </p>
+<p>在命令行终端中，启动 <code>wpantund</code> 、创建 <code>utun7</code> 接口并使能 log 信息输出：</p>
+<div class="codehilite"><pre><span></span>$ sudo /usr/local/sbin/wpantund -o Config:NCP:SocketPath /dev/cu.usbmodem14112  <span class="se">\</span>
+        -o Config:TUN:InterfaceName utun7 <span class="se">\</span>
+        -o Daemon:SyslogMask <span class="s2">&quot; -info&quot;</span>
+</pre></div>
+
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>你也可以把上面相关的配置写到 <code>/etc/wpantund.conf</code> 配置文件中，这样就不需要每次都重新配置 wpantund。</p>
+</div>
+<p>如果配置成功，将会有以下类似信息输出：</p>
+<div class="codehilite"><pre><span></span>Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Starting wpantund <span class="m">0</span>.08.00d <span class="o">(</span>Jun  <span class="m">9</span> <span class="m">2018</span> <span class="m">00</span>:31:51<span class="o">)</span> . . .
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;:  <span class="nv">SOURCE_VERSION</span> <span class="o">=</span> <span class="m">0</span>.07.01-217-g86d29d6
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;:  <span class="nv">BUILD_VERSION</span> <span class="o">=</span> <span class="m">0</span>.07.01-217-g86d29d6
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Configuration file <span class="s2">&quot;/etc/wpantund.conf&quot;</span> read.
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Ready. Using DBUS bus <span class="s2">&quot;:1.2&quot;</span>
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Running as root without dropping privileges!
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: State change: <span class="s2">&quot;uninitialized&quot;</span> -&gt; <span class="s2">&quot;offline&quot;</span>
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: NCP is running <span class="s2">&quot;OPENTHREAD/20170716-00584-ge4f5f240-dirty; NRF52840; Jun  8 2018 23:36:19&quot;</span>
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Driver is running <span class="s2">&quot;0.08.00d (0.07.01-217-g86d29d6; Jun  9 2018 00:31:51)&quot;</span>
+<span class="m">1</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Network is not joinable
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Resetting interface<span class="o">(</span>s<span class="o">)</span>. . .
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Finished initializing NCP
+</pre></div>
+
+<p>保留这个终端窗口，查看输出的 log 信息以便定位问题。</p>
+<p>使用另外的工具 <code>wpanctl</code> 来控制管理 <strong>NCP</strong> 设备：</p>
+<div class="codehilite"><pre><span></span>$ sudo /usr/local/bin/wpanctl -I utun7
+wpanctl:utun7&gt;
+</pre></div>
+
+<h3 id="ncp_1">验证 NCP 是否工作<a class="headerlink" href="#ncp_1" title="Permanent link">&para;</a></h3>
+<p>使用 <code>status</code> 命令验证 NCP 是否正常工作：</p>
+<p><img alt="" src="./../../openthread/images/verify_ncp_build.png" /></p>
+<h2 id="ftd">设置 FTD 设备<a class="headerlink" href="#ftd" title="Permanent link">&para;</a></h2>
+<p>另外两个 nRF52840-MDK 将被配置为 FTD 设备（Full Thread Devices），这类设备上运行 OpenThread CLI 固件，你可以直接通过设备的串口对其进行配置管理。</p>
+<p>这两个设备一个配置为 <code>Commissioner</code> 角色，用于在 Thread 网络中认证和许可其他设备；另外一个配置为 <code>Joiner</code> 角色，可以被 <code>Commissioner</code> 安全地认证和许可。</p>
+<h3 id="cli">编译下载 CLI 固件<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h3>
+<p>为 nRF52840-MDK 编译 <code>Commissioner</code> 和 <code>Joiner</code> 角色的固件，为了方便我们同时使能这两个宏：</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> ~/openthread
+$ make -f examples/Makefile-nrf52840 clean
+$ make -f examples/Makefile-nrf52840 <span class="nv">COMMISSIONER</span><span class="o">=</span><span class="m">1</span> <span class="nv">JOINER</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>为了避免冗余，建议单一角色的设备使能特定的宏，例如：只作为 <code>Joiner</code> 角色的设备，只开启 <code>JOINER=1</code> 的。</p>
+</div>
+<p>切换到输出目录，将二进制文件转换为 hex 文件：
+<div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> ~/openthread/output/nrf52840/bin
+$ arm-none-eabi-objcopy -O ihex ot-cli-ftd ot-cli-ftd.hex
+</pre></div></p>
+<p>连接 nRF52840-MDK，烧录固件：</p>
+<div class="codehilite"><pre><span></span>$ pyocd-flashtool -l
+WARNING:root:Unsupported board found <span class="m">1026</span>
+WARNING:root:Unsupported board found <span class="m">1026</span>
+<span class="nv">0</span> <span class="o">=</span>&gt; Unknown Board <span class="o">[</span>cortex_m<span class="o">]</span> <span class="nv">boardId</span> <span class="o">=</span>&gt; 10260000083ac27f00000000000000000000000097969902
+<span class="nv">1</span> <span class="o">=</span>&gt; Unknown Board <span class="o">[</span>cortex_m<span class="o">]</span> <span class="nv">boardId</span> <span class="o">=</span>&gt; 10260000083ab20300000000000000000000000097969902
+
+$ pyocd-flashtool -t nrf52 -b 10260000083ac27f00000000000000000000000097969902 -ce ot-cli-ftd.hex
+</pre></div>
+
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>将该板子标记为 <strong>Commissioner</strong>，以避免与其他角色的设备混淆。</p>
+</div>
+<h3 id="cli_1">验证 CLI 是否工作<a class="headerlink" href="#cli_1" title="Permanent link">&para;</a></h3>
+<p>打开串口，使用 <code>ipaddr</code> 查看设备 IP：</p>
+<div class="codehilite"><pre><span></span>$ screen /dev/cu.usbmodem142112 <span class="m">115200</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>&gt; ipaddr
+fd11:2233:4455:0:99ea:1fe9:acd6:d384
+fe80:0:0:0:2003:a240:810f:1598
+Done
+</pre></div>
+
+<h3 id="ftd-joiner">设置 FTD Joiner<a class="headerlink" href="#ftd-joiner" title="Permanent link">&para;</a></h3>
+<p>重复以上操作，为另外一个 nRF52840-MDK 烧录 <code>ot-cli-ftd.hex</code> 固件，将其配置为 <strong>FTD Joiner</strong> 设备，并做好标记。</p>
+<p>打开串口，使用 <code>ipaddr</code> 查看设备 IP：</p>
+<div class="codehilite"><pre><span></span>$ screen /dev/cu.usbmodem142412 <span class="m">115200</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>&gt; ipaddr
+fe80:0:0:0:d079:7d86:6413:4f4e
+fd11:2233:4455:0:e839:eb52:f7ec:74e3
+Done
+</pre></div>
+
+<h2 id="thread">建立 Thread 网络<a class="headerlink" href="#thread" title="Permanent link">&para;</a></h2>
+<p>准备就绪，我们可以开始建立一个 Thread 网络，在 <strong>FTD Commissioner</strong> 设置配置窗口，开始配置该网络参数：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; networkname makerdiary
+Done
+&gt; extpanid <span class="m">1122334455667788</span>
+Done
+&gt; panid 0x1122
+Done
+&gt; masterkey <span class="m">11223344556677881122334455667788</span>
+Done
+&gt; ifconfig up
+Done
+&gt; thread start
+Done
+</pre></div>
+
+<p>过一会，查看该设备状态，它将成为 <strong>Leader</strong> 角色，你可以使用 <code>rloc16</code> 查看其 RLOC16 地址：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; state
+leader
+Done
+&gt; rloc16
+<span class="m">3400</span>
+Done
+</pre></div>
+
+<p>检查该设备的 IPv6：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; ipaddr
+fd11:2233:4455:0:0:ff:fe00:fc00        <span class="c1"># Leader Anycast Locator (ALOC)</span>
+fd11:2233:4455:0:0:ff:fe00:3400        <span class="c1"># Routing Locator (RLOC)</span>
+fd11:2233:4455:0:99ea:1fe9:acd6:d384   <span class="c1"># Mesh-Local EID (ML-EID)</span>
+fe80:0:0:0:2003:a240:810f:1598         <span class="c1"># Link-Local Address (LLA)</span>
+Done
+</pre></div>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>一个 Thread 设备可以有多个 IPv6 地址，可以通过 “<a href="https://openthread.io/guides/thread_primer/ipv6_addressing#unicast_address_types">IPv6 Addressing</a>” 了解更多内容。</p>
+</div>
+<p>这时，一个名为 <code>makerdiary</code> 的 Thread 网络已经建立，并且可以被其他设备发现，可在 <strong>NCP Joiner</strong> 和 <strong>FTD Joiner</strong> 的 <code>wpanctl</code> 窗口使用 <code>scan</code> 命令扫面发现网络：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## NCP Joiner ##</span>
+----------------
+
+wpanctl:utun7&gt; scan
+   <span class="p">|</span> Joinable <span class="p">|</span> NetworkName        <span class="p">|</span> PAN ID <span class="p">|</span> Ch <span class="p">|</span> XPanID           <span class="p">|</span> HWAddr           <span class="p">|</span> RSSI
+---+----------+--------------------+--------+----+------------------+------------------+------
+ <span class="m">1</span> <span class="p">|</span>       NO <span class="p">|</span> <span class="s2">&quot;makerdiary&quot;</span>       <span class="p">|</span> 0x1122 <span class="p">|</span> <span class="m">11</span> <span class="p">|</span> <span class="m">1122334455667788</span> <span class="p">|</span> 2203A240810F1598 <span class="p">|</span>  -59
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; scan
+<span class="p">|</span> J <span class="p">|</span> Network Name     <span class="p">|</span> Extended PAN     <span class="p">|</span> PAN  <span class="p">|</span> MAC Address      <span class="p">|</span> Ch <span class="p">|</span> dBm <span class="p">|</span> LQI <span class="p">|</span>
++---+------------------+------------------+------+------------------+----+-----+-----+
+&gt; <span class="p">|</span> <span class="m">0</span> <span class="p">|</span> makerdiary       <span class="p">|</span> <span class="m">1122334455667788</span> <span class="p">|</span> <span class="m">1122</span> <span class="p">|</span> 2203a240810f1598 <span class="p">|</span> <span class="m">11</span> <span class="p">|</span> -32 <span class="p">|</span> <span class="m">244</span> <span class="p">|</span>
+Done
+</pre></div>
+
+<p>接下来，我们可以让 <strong>NCP Joiner</strong> 加入到该网络中：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## NCP Joiner ##</span>
+----------------
+
+wpanctl:utun7&gt; setprop Network:Key <span class="m">11223344556677881122334455667788</span>
+wpanctl:utun7&gt; join <span class="m">1</span>
+Joining <span class="s2">&quot;makerdiary&quot;</span> <span class="m">1122334455667788</span> as node <span class="nb">type</span> <span class="s2">&quot;end-device&quot;</span>
+Successfully Joined!
+</pre></div>
+
+<p>使用 <code>status</code> 查看状态，该设备已经成功加入并分配了对应的 IPv6 地址： </p>
+<div class="codehilite"><pre><span></span><span class="c1">## NCP Joiner ##</span>
+----------------
+
+wpanctl:utun7&gt; status
+<span class="nv">utun7</span> <span class="o">=</span>&gt; <span class="o">[</span>
+    <span class="s2">&quot;NCP:State&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;associated&quot;</span>
+    <span class="s2">&quot;Daemon:Enabled&quot;</span> <span class="o">=</span>&gt; <span class="nb">true</span>
+    <span class="s2">&quot;NCP:Version&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;OPENTHREAD/20170716-00650-g631557e8-dirty; NRF52840; Jun  9 2018 15:45:03&quot;</span>
+    <span class="s2">&quot;Daemon:Version&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;0.08.00d (0.07.01-217-g86d29d6; Jun  9 2018 00:31:51)&quot;</span>
+    <span class="s2">&quot;Config:NCP:DriverName&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;spinel&quot;</span>
+    <span class="s2">&quot;NCP:HardwareAddress&quot;</span> <span class="o">=</span>&gt; <span class="o">[</span>9019EC5D617D7AAB<span class="o">]</span>
+    <span class="s2">&quot;NCP:Channel&quot;</span> <span class="o">=</span>&gt; <span class="m">11</span>
+    <span class="s2">&quot;Network:NodeType&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;end-device&quot;</span>
+    <span class="s2">&quot;Network:Name&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;makerdiary&quot;</span>
+    <span class="s2">&quot;Network:XPANID&quot;</span> <span class="o">=</span>&gt; 0x1122334455667788
+    <span class="s2">&quot;Network:PANID&quot;</span> <span class="o">=</span>&gt; 0x1122
+    <span class="s2">&quot;IPv6:LinkLocalAddress&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;fe80::60bd:ff84:2121:344d&quot;</span>
+    <span class="s2">&quot;IPv6:MeshLocalAddress&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;fd11:2233:4455::f:b5e:169b:b875&quot;</span>
+    <span class="s2">&quot;IPv6:MeshLocalPrefix&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;fd11:2233:4455::/64&quot;</span>
+    <span class="s2">&quot;com.nestlabs.internal:Network:AllowingJoin&quot;</span> <span class="o">=</span>&gt; <span class="nb">false</span>
+<span class="o">]</span>
+</pre></div>
+
+<p>获取 <strong>NCP Joiner</strong> 的 RLOC16 地址：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## NCP Joiner ##</span>
+----------------
+
+wpanctl:utun7&gt; getprop Thread:RLOC16
+Thread:RLOC16 <span class="o">=</span> 0x3403
+</pre></div>
+
+<p>回到 <strong>FTD Commissioner</strong>，可以查看 <code>router table</code> 和 <code>child table</code>：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; router table
+<span class="p">|</span> ID <span class="p">|</span> RLOC16 <span class="p">|</span> Next Hop <span class="p">|</span> Path Cost <span class="p">|</span> LQ In <span class="p">|</span> LQ Out <span class="p">|</span> Age <span class="p">|</span> Extended MAC     <span class="p">|</span>
++----+--------+----------+-----------+-------+--------+-----+------------------+
+<span class="p">|</span> <span class="m">13</span> <span class="p">|</span> 0x3400 <span class="p">|</span>       <span class="m">63</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">0</span> <span class="p">|</span>      <span class="m">0</span> <span class="p">|</span>   <span class="m">0</span> <span class="p">|</span> 2203a240810f1598 <span class="p">|</span>
+
+Done
+&gt; child table
+<span class="p">|</span> ID  <span class="p">|</span> RLOC16 <span class="p">|</span> Timeout    <span class="p">|</span> Age        <span class="p">|</span> LQ In <span class="p">|</span> C_VN <span class="p">|</span>R<span class="p">|</span>S<span class="p">|</span>D<span class="p">|</span>N<span class="p">|</span> Extended MAC     <span class="p">|</span>
++-----+--------+------------+------------+-------+------+-+-+-+-+------------------+
+<span class="p">|</span>   <span class="m">3</span> <span class="p">|</span> 0x3403 <span class="p">|</span>        <span class="m">240</span> <span class="p">|</span>         <span class="m">66</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>   <span class="m">86</span> <span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span> 62bdff842121344d <span class="p">|</span>
+
+Done
+</pre></div>
+
+<p>使用 <code>ping</code> 命令检查连接：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; ping fd11:2233:4455::f:b5e:169b:b875
+&gt; <span class="m">8</span> bytes from fd11:2233:4455:0:f:b5e:169b:b875: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">hlim</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>35ms
+</pre></div>
+
+<p>至此，我们已经建立了具有两个节点的 Thread 网络，其网络拓扑如下：</p>
+<p><img alt="" src="./../../openthread/images/ncp_ftd_topology.png" /></p>
+<h2 id="ftd-joiner_1">许可 FTD Joiner<a class="headerlink" href="#ftd-joiner_1" title="Permanent link">&para;</a></h2>
+<p>接下来，我们让 <strong>FTD Joiner</strong> 加入到 <code>makerdiary</code> 网络中。</p>
+<p>先在 <strong>FTD Joiner</strong> 中扫描网络：</p>
+<div class="codehilite"><pre><span></span>## FTD Joiner ##
+----------------
+
+&gt; scan
+| J | Network Name     | Extended PAN     | PAN  | MAC Address      | Ch | dBm | LQI |
++---+------------------+------------------+------+------------------+----+-----+-----+
+&gt; | 0 | makerdiary       | 1122334455667788 | 1122 | 2203a240810f1598 | 11 | -32 | 244 |
+Done
+</pre></div>
+
+<p><code>J</code> 列的值为 <code>0</code>，表示该设备未被许可加入到 <code>makerdiary</code> 中。接下来我们就演示如何许可 <strong>FTD Joiner</strong> 加入到网络中。</p>
+<p>先查看 <strong>FTD Joiner</strong> 的 <code>eui64</code>：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; eui64
+31ae3e8e7b87cfd6
+Done
+</pre></div>
+
+<p>在 <strong>FTD Commissioner</strong> 对该 <code>eui64</code> 进行许可：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; commissioner start
+Done
+&gt; commissioner joiner add 31ae3e8e7b87cfd6 J01NME
+Done
+</pre></div>
+
+<p>回到 <strong>FTD Joiner</strong>，再次扫描网络：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; scan
+<span class="p">|</span> J <span class="p">|</span> Network Name     <span class="p">|</span> Extended PAN     <span class="p">|</span> PAN  <span class="p">|</span> MAC Address      <span class="p">|</span> Ch <span class="p">|</span> dBm <span class="p">|</span> LQI <span class="p">|</span>
++---+------------------+------------------+------+------------------+----+-----+-----+
+&gt; <span class="p">|</span> <span class="m">1</span> <span class="p">|</span> makerdiary       <span class="p">|</span> <span class="m">1122334455667788</span> <span class="p">|</span> <span class="m">1122</span> <span class="p">|</span> 2203a240810f1598 <span class="p">|</span> <span class="m">11</span> <span class="p">|</span> -32 <span class="p">|</span> <span class="m">244</span> <span class="p">|</span>
+Done
+</pre></div>
+
+<p>可发现 <code>J</code> 状态已变成 <code>1</code>，表示此时我们可以让该设备加入到网络中：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; ifconfig up
+Done
+&gt; joiner start J01NME
+Done
+</pre></div>
+
+<p>等待一会，会发现显示是否加入成功：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt;Join success
+</pre></div>
+
+<p>这时我们就可以启动 <strong>FTD Joiner</strong> 了：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; thread start
+Done
+&gt; state
+child
+Done
+&gt; rloc16
+<span class="m">3404</span>
+Done
+</pre></div>
+
+<p>此时，我们在 <strong>FTD Commissioner</strong> 中检查 <code>router table</code> 和 <code>child table</code>：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; router table
+<span class="p">|</span> ID <span class="p">|</span> RLOC16 <span class="p">|</span> Next Hop <span class="p">|</span> Path Cost <span class="p">|</span> LQ In <span class="p">|</span> LQ Out <span class="p">|</span> Age <span class="p">|</span> Extended MAC     <span class="p">|</span>
++----+--------+----------+-----------+-------+--------+-----+------------------+
+<span class="p">|</span> <span class="m">13</span> <span class="p">|</span> 0x3400 <span class="p">|</span>       <span class="m">63</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">0</span> <span class="p">|</span>      <span class="m">0</span> <span class="p">|</span>   <span class="m">0</span> <span class="p">|</span> 2203a240810f1598 <span class="p">|</span>
+
+Done
+&gt; child table
+<span class="p">|</span> ID  <span class="p">|</span> RLOC16 <span class="p">|</span> Timeout    <span class="p">|</span> Age        <span class="p">|</span> LQ In <span class="p">|</span> C_VN <span class="p">|</span>R<span class="p">|</span>S<span class="p">|</span>D<span class="p">|</span>N<span class="p">|</span> Extended MAC     <span class="p">|</span>
++-----+--------+------------+------------+-------+------+-+-+-+-+------------------+
+<span class="p">|</span>   <span class="m">3</span> <span class="p">|</span> 0x3403 <span class="p">|</span>        <span class="m">240</span> <span class="p">|</span>        <span class="m">231</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>   <span class="m">86</span> <span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span> 62bdff842121344d <span class="p">|</span>
+<span class="p">|</span>   <span class="m">4</span> <span class="p">|</span> 0x3404 <span class="p">|</span>        <span class="m">240</span> <span class="p">|</span>         <span class="m">49</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>   <span class="m">88</span> <span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span> 7a2755cf47e45907 <span class="p">|</span>
+
+Done
+</pre></div>
+
+<p>这时，我们得到的网络拓扑如下图：</p>
+<p><img alt="" src="./../../openthread/images/thread_topology_updated.png" /></p>
+<h2 id="udp">发送 UDP 消息<a class="headerlink" href="#udp" title="Permanent link">&para;</a></h2>
+<p>成功创建 Thread 网络后，我们便可以使用 UDP 协议在节点设备之间传输消息。</p>
+<p>获取 <strong>FTD Joiner</strong> 的 Mesh-Local EID 地址：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; ipaddr
+fd11:2233:4455:0:0:ff:fe00:fc00        <span class="c1"># Leader Anycast Locator (ALOC)</span>
+fd11:2233:4455:0:0:ff:fe00:f400        <span class="c1"># Routing Locator (RLOC)</span>
+fe80:0:0:0:7827:55cf:47e4:5907         <span class="c1"># Link-Local Address (LLA)</span>
+fd11:2233:4455:0:e839:eb52:f7ec:74e3   <span class="c1"># Mesh-Local EID (ML-EID)</span>
+Done
+</pre></div>
+
+<p>启动 UDP，并绑定 <code>1212</code> 端口：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; udp open
+Done
+&gt; udp <span class="nb">bind</span> :: <span class="m">1212</span>
+</pre></div>
+
+<p>回到 <strong>FTD Commissioner</strong>，启动 UDP，然后连接 <strong>FTD Jonier</strong>：</p>
+<div class="codehilite"><pre><span></span>## FTD Commissioner ##
+----------------------
+
+&gt; udp open
+Done
+&gt; udp connect fd11:2233:4455:0:e839:eb52:f7ec:74e3 1212
+Done
+</pre></div>
+
+<p>连接成功后，我们就可以尝试发送 UDP 消息：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; udp send hello-openthread
+Done
+</pre></div>
+
+<p>如果一切正常的话，我们会在 <strong>FTD Joiner</strong> 收到 UDP 消息：</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; <span class="m">16</span> bytes from fd11:2233:4455:0:0:ff:fe00:3400 <span class="m">49153</span> hello-openthread
+</pre></div>
+
+<h2 id="_3">更多示例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>至此，我们已经成功使用 nRF52840-MDK 建立 Thread 网络，并成功在节点设备之间传输消息。</p>
+<p>后续更多应用示例会更新到 <a href="https://github.com/makerdiary/nrf52840-mdk">nrf52840-mdk</a> 仓库中，敬请关注！</p>
+<h2 id="_4">参考资源<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://openthread.io">openthread.io</a></li>
+<li><a href="https://github.com/openthread/openthread/">github.com/openthread</a></li>
+<li><a href="https://codelabs.developers.google.com/">codelabs.developers.google.com</a></li>
+<li><a href="https://openthread.io/guides/thread_primer/">Thread Primer</a> — covers all the Thread concepts in this documentation</li>
+<li><a href="https://github.com/openthread/openthread/blob/master/src/cli/README.md">OpenThread CLI reference</a></li>
+<li><a href="https://github.com/openthread/openthread/blob/master/src/cli/README_UDP.md">OpenThread UDP CLI reference</a></li>
+<li><a href="https://github.com/openthread/wpantund/blob/c3f43e8fa9670f1688f99a02c7ccc9f1bfaa3718/src/wpantund/wpan-properties.h">wpanctl properties reference</a></li>
+<li><a href="https://openthread.io/reference/group/api-udp">OpenThread UDP API reference</a></li>
+<li><a href="http://aperiodic.net/screen/quick_reference">GNU Screen quick reference</a></li>
+</ul>
+<h2 id="_5">问题反馈<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>如果在开发过程遇到任何问题，可以通过 <a href="https://github.com/makerdiary/nrf52840-mdk/issues">GitHub Issue</a> 寻求解决。</p>
+<p><a href="https://github.com/makerdiary/nrf52840-mdk/issues/new"><button data-md-color-primary="marsala"><i class="fa fa-github"></i> 创建 Issue</button></a></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+              
+                
+
+
+  <h2 id="__comments">Comments</h2>
+  <div id="discourse-comments"></div>
+  <script>DiscourseEmbed={discourseUrl:"https://community.makerdiary.co/",discourseEmbedUrl:"https://wiki.makerdiary.co/nrf52840-mdk/cn/openthread/"},function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src=DiscourseEmbed.discourseUrl+"javascripts/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}()</script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../mesh/" title="nRF5 SDK for Mesh" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                nRF5 SDK for Mesh
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../mbedos/" title="Arm Mbed OS" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Arm Mbed OS
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 <a href="https://makerdiary.com">makerdiary.com</a>
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://makerdiary.com" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/makerdiary" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/makerdiary" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.facebook.com/makerdiary" class="md-footer-social__link fa fa-facebook"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.edf82dcc.js"></script>
+      
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-54344624-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

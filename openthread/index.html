@@ -1,0 +1,2026 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Micro Development Kit for IoT Applications using nRF52840 SoC">
+      
+      
+        <link rel="canonical" href="https://wiki.makerdiary.co/nrf52840-mdk/openthread/">
+      
+      
+        <meta name="author" content="makerdiary">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.7.3">
+    
+    
+      
+        <title>OpenThread - nRF52840-MDK Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.8d40d89b.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.c61db26e.css">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="marsala" data-md-color-accent="marsala">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#openthread-an-open-source-implementation-of-thread-released-by-nest" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://wiki.makerdiary.co/nrf52840-mdk/" title="nRF52840-MDK Documentation" class="md-header-nav__button md-logo">
+          
+            <img src="../images/logo.svg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                nRF52840-MDK Documentation
+              </span>
+              <span class="md-header-nav__topic">
+                OpenThread
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/makerdiary/nrf52840-mdk" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      makerdiary/nrf52840-mdk
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="Introduction" class="md-tabs__link md-tabs__link--active">
+        Introduction
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../cn/" title="中文文档" class="md-tabs__link">
+          中文文档
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <img src="../images/logo.svg" width="48" height="48">
+      
+    </span>
+    nRF52840-MDK Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/makerdiary/nrf52840-mdk" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      makerdiary/nrf52840-mdk
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../nrf5-sdk/" title="nRF5 SDK" class="md-nav__link">
+      nRF5 SDK
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../mesh/" title="nRF5 SDK for Mesh" class="md-nav__link">
+      nRF5 SDK for Mesh
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        OpenThread
+      </label>
+    
+    <a href="./" title="OpenThread" class="md-nav__link md-nav__link--active">
+      OpenThread
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" title="Getting started" class="md-nav__link">
+    Getting started
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-arm-gnu-toolchain" title="Install ARM GNU Toolchain" class="md-nav__link">
+    Install ARM GNU Toolchain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-pyocd" title="Install pyOCD" class="md-nav__link">
+    Install pyOCD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-wpantund" title="Install wpantund" class="md-nav__link">
+    Install wpantund
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone-openthread" title="Clone OpenThread" class="md-nav__link">
+    Clone OpenThread
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-the-ncp-joiner" title="Set up the NCP Joiner" class="md-nav__link">
+    Set up the NCP Joiner
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-and-flash" title="Build and flash" class="md-nav__link">
+    Build and flash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-wpantund" title="Configure wpantund" class="md-nav__link">
+    Configure wpantund
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-build" title="Verify build" class="md-nav__link">
+    Verify build
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-the-ftds" title="Set up the FTDs" class="md-nav__link">
+    Set up the FTDs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-and-flash_1" title="Build and flash" class="md-nav__link">
+    Build and flash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-build_1" title="Verify build" class="md-nav__link">
+    Verify build
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-up-the-ftd-joiner" title="Set up the FTD Joiner" class="md-nav__link">
+    Set up the FTD Joiner
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-the-thread-network" title="Create the Thread network" class="md-nav__link">
+    Create the Thread network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-the-ncp-joiner" title="Add the NCP Joiner" class="md-nav__link">
+    Add the NCP Joiner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commission-the-ftd-joiner" title="Commission the FTD Joiner" class="md-nav__link">
+    Commission the FTD Joiner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-in-action" title="Thread in action" class="md-nav__link">
+    Thread in action
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downgrade-the-ftd-joiner" title="Downgrade the FTD Joiner" class="md-nav__link">
+    Downgrade the FTD Joiner
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-the-leader" title="Remove the Leader" class="md-nav__link">
+    Remove the Leader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reattach-the-ftd-commissioner" title="Reattach the FTD Commissioner" class="md-nav__link">
+    Reattach the FTD Commissioner
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" title="Troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#screen" title="Screen" class="md-nav__link">
+    Screen
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thread-nodes" title="Thread nodes" class="md-nav__link">
+    Thread nodes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#send-messages-with-udp" title="Send messages with UDP" class="md-nav__link">
+    Send messages with UDP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations" title="Congratulations!" class="md-nav__link">
+    Congratulations!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" title="Reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-an-issue" title="Create an Issue" class="md-nav__link">
+    Create an Issue
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../mbedos/" title="Arm Mbed OS" class="md-nav__link">
+      Arm Mbed OS
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../zephyr/" title="Zephyr" class="md-nav__link">
+      Zephyr
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../mynewt/" title="Mynewt" class="md-nav__link">
+      Mynewt
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../daplink/" title="DAPLink" class="md-nav__link">
+      DAPLink
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../how-to-buy/" title="How to Buy" class="md-nav__link">
+      How to Buy
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../CONTRIBUTING/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../LICENSE/" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      中文文档
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        中文文档
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cn/" title="简介" class="md-nav__link">
+      简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cn/getting-started/" title="快速入门" class="md-nav__link">
+      快速入门
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cn/nrf5-sdk/" title="nRF5 SDK" class="md-nav__link">
+      nRF5 SDK
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cn/mesh/" title="nRF5 SDK for Mesh" class="md-nav__link">
+      nRF5 SDK for Mesh
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cn/openthread/" title="OpenThread" class="md-nav__link">
+      OpenThread
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cn/mbedos/" title="Arm Mbed OS" class="md-nav__link">
+      Arm Mbed OS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cn/zephyr/" title="Zephyr" class="md-nav__link">
+      Zephyr
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cn/mynewt/" title="Mynewt" class="md-nav__link">
+      Mynewt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cn/daplink/" title="DAPLink" class="md-nav__link">
+      DAPLink
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cn/how-to-buy/" title="如何购买" class="md-nav__link">
+      如何购买
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cn/CONTRIBUTING/" title="反馈&贡献" class="md-nav__link">
+      反馈&贡献
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cn/LICENSE/" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" title="Getting started" class="md-nav__link">
+    Getting started
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-arm-gnu-toolchain" title="Install ARM GNU Toolchain" class="md-nav__link">
+    Install ARM GNU Toolchain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-pyocd" title="Install pyOCD" class="md-nav__link">
+    Install pyOCD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-wpantund" title="Install wpantund" class="md-nav__link">
+    Install wpantund
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone-openthread" title="Clone OpenThread" class="md-nav__link">
+    Clone OpenThread
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-the-ncp-joiner" title="Set up the NCP Joiner" class="md-nav__link">
+    Set up the NCP Joiner
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-and-flash" title="Build and flash" class="md-nav__link">
+    Build and flash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-wpantund" title="Configure wpantund" class="md-nav__link">
+    Configure wpantund
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-build" title="Verify build" class="md-nav__link">
+    Verify build
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-the-ftds" title="Set up the FTDs" class="md-nav__link">
+    Set up the FTDs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-and-flash_1" title="Build and flash" class="md-nav__link">
+    Build and flash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-build_1" title="Verify build" class="md-nav__link">
+    Verify build
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-up-the-ftd-joiner" title="Set up the FTD Joiner" class="md-nav__link">
+    Set up the FTD Joiner
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-the-thread-network" title="Create the Thread network" class="md-nav__link">
+    Create the Thread network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-the-ncp-joiner" title="Add the NCP Joiner" class="md-nav__link">
+    Add the NCP Joiner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commission-the-ftd-joiner" title="Commission the FTD Joiner" class="md-nav__link">
+    Commission the FTD Joiner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-in-action" title="Thread in action" class="md-nav__link">
+    Thread in action
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downgrade-the-ftd-joiner" title="Downgrade the FTD Joiner" class="md-nav__link">
+    Downgrade the FTD Joiner
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-the-leader" title="Remove the Leader" class="md-nav__link">
+    Remove the Leader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reattach-the-ftd-commissioner" title="Reattach the FTD Commissioner" class="md-nav__link">
+    Reattach the FTD Commissioner
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" title="Troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#screen" title="Screen" class="md-nav__link">
+    Screen
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thread-nodes" title="Thread nodes" class="md-nav__link">
+    Thread nodes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#send-messages-with-udp" title="Send messages with UDP" class="md-nav__link">
+    Send messages with UDP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations" title="Congratulations!" class="md-nav__link">
+    Congratulations!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" title="Reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-an-issue" title="Create an Issue" class="md-nav__link">
+    Create an Issue
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="openthread-an-open-source-implementation-of-thread-released-by-nest">OpenThread <br><small>An open-source implementation of Thread® released by Nest</small><a class="headerlink" href="#openthread-an-open-source-implementation-of-thread-released-by-nest" title="Permanent link">&para;</a></h1>
+<p><a href="https://github.com/openthread/openthread"><img alt="" src="./images/openthread_logo.png" /></a></p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p><a href="https://openthread.io/">OpenThread</a> is an open-source implementation of the <a href="http://threadgroup.org/">Thread®</a> networking protocol. Nest has released OpenThread to make the networking technology used in Nest products more broadly available to developers, in order to accelerate the development of products for the connected home.</p>
+<p>The <a href="http://threadgroup.org/ThreadSpec">Thread specification</a> defines an IPv6-based reliable, secure and low-power wireless device-to-device communication protocol for home applications. OpenThread implements all Thread networking layers (IPv6, 6LoWPAN, IEEE 802.15.4 with MAC security, Mesh Link Establishment, Mesh Routing) and device roles, as well as Border Router support.</p>
+<p><img alt="" src="./images/openthread_intro.jpg" /></p>
+<p>In the following documentation sections, you'll program OpenThread on nRF52840-MDK, create and manage a Thread network, and pass messages between nodes.</p>
+<p><img alt="" src="./images/nrf52840_mdk_openthread.jpg" /></p>
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<p>The following documentation sections provide detailed information about the required software toolchains.</p>
+<h3 id="install-arm-gnu-toolchain">Install ARM GNU Toolchain<a class="headerlink" href="#install-arm-gnu-toolchain" title="Permanent link">&para;</a></h3>
+<p>The GNU Embedded Toolchain for Arm is a ready-to-use, open source suite of tools for C, C++ and Assembly programming targeting Arm Cortex-M and Cortex-R family of processors. It includes the GNU Compiler (GCC) and is available free of charge directly from Arm for embedded software development on Windows, Linux and macOS operating systems.</p>
+<p>Download and install the <code>6-2017-q2-update</code> version. Then make sure to add the path to your toolchain to your OS PATH environment variable:</p>
+<p><a href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads"><button data-md-color-primary="marsala">Download</button></a></p>
+<div class="codehilite"><pre><span></span><span class="c1"># in ~/.bash_profile, add the following script</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;&lt;path to install directory&gt;/gcc-arm-none-eabi-6-2017-q2-update/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+
+<p>Adding the path makes it possible to run the toolchain executables from any directory using the terminal. To verify that the path is set correctly, type the following in your terminal:</p>
+<div class="codehilite"><pre><span></span>$ arm-none-eabi-gcc --version
+</pre></div>
+
+<h3 id="install-pyocd">Install pyOCD<a class="headerlink" href="#install-pyocd" title="Permanent link">&para;</a></h3>
+<p>pyOCD is an Open Source python 2.7 based library for programming and debugging ARM Cortex-M microcontrollers using CMSIS-DAP. Linux, OSX and Windows are supported.</p>
+<p>The latest stable version of pyOCD may be installed via <a href="https://pip.pypa.io/en/stable/index.html">pip</a> as follows:</p>
+<div class="codehilite"><pre><span></span>$ pip install --pre -U pyocd
+</pre></div>
+
+<p>Follow <a href="./../getting-started/#using-pyocd">this section</a> for more information.</p>
+<h3 id="install-wpantund">Install wpantund<a class="headerlink" href="#install-wpantund" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/openthread/wpantund">wpantund</a> is a user-space network interface driver/daemon that provides a native IPv6 network interface to a low-power wireless <em>Network Co-Processor</em> (or NCP). It was written and developed by Nest Labs to make supporting Thread connectivity on Unix-like operating systems more straightforward.</p>
+<p><strong>wpantund</strong> is designed to marshall all access to the NCP, ensuring that it always remains in a consistent and well-defined state.</p>
+<p>Follow the <a href="https://github.com/openthread/wpantund/blob/master/INSTALL.md">wpantund Installation Guide</a> from <a href="https://github.com/openthread/wpantund">openthread/wpantund</a> to install <strong>wpantund</strong>.</p>
+<h3 id="clone-openthread">Clone OpenThread<a class="headerlink" href="#clone-openthread" title="Permanent link">&para;</a></h3>
+<p>Clone and install OpenThread:</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> ~
+$ git clone --recursive https://github.com/openthread/openthread.git
+$ <span class="nb">cd</span> openthread
+$ ./bootstrap
+</pre></div>
+
+<p>Specify platform configuration for nRF52840-MDK by dapting the <code>openthread/examples/platforms/nrf52840/platform-config.h</code> file to:</p>
+<div class="codehilite"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @def UART_HWFC</span>
+<span class="cm"> *</span>
+<span class="cm"> * UART Hardware Flow Control.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @brief Possible values:</span>
+<span class="cm"> *         \ref NRF_UART_HWFC_ENABLED - HW Flow control enabled.</span>
+<span class="cm"> *         \ref NRF_UART_HWFC_DISABLED - HW Flow control disabled.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="cp">#ifndef UART_HWFC</span>
+<span class="cp">#define UART_HWFC NRF_UART_HWFC_DISABLED</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @def UART_PIN_TX</span>
+<span class="cm"> *</span>
+<span class="cm"> * UART TX Pin.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="cp">#ifndef UART_PIN_TX</span>
+<span class="cp">#define UART_PIN_TX 20</span>
+<span class="cp">#endif</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @def UART_PIN_RX</span>
+<span class="cm"> *</span>
+<span class="cm"> * UART RX Pin.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="cp">#ifndef UART_PIN_RX</span>
+<span class="cp">#define UART_PIN_RX 19</span>
+<span class="cp">#endif</span>
+</pre></div>
+
+<p>Now you're ready to build and flash OpenThread to the nRF52840-MDK.</p>
+<h2 id="set-up-the-ncp-joiner">Set up the NCP Joiner<a class="headerlink" href="#set-up-the-ncp-joiner" title="Permanent link">&para;</a></h2>
+<h3 id="build-and-flash">Build and flash<a class="headerlink" href="#build-and-flash" title="Permanent link">&para;</a></h3>
+<p>Build the OpenThread nRF52840 example with Joiner functionality. A device uses the Joiner role to be securely authenticated and commissioned onto a Thread network. Always clean the repo of previous builds first by running <code>make clean</code>.</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> ~/openthread
+$ make -f examples/Makefile-nrf52840 clean
+$ make -f examples/Makefile-nrf52840 <span class="nv">JOINER</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For more information on building and configuring OpenThread, see <a href="https://openthread.io/guides/building/">Building OpenThread</a>.</p>
+</div>
+<p>Navigate to the directory with the OpenThread FTD NCP binary, and convert it to hex format:</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> ~/openthread/output/nrf52840/bin
+$ arm-none-eabi-objcopy -O ihex ot-ncp-ftd ot-ncp-ftd.hex
+</pre></div>
+
+<p>Connect nRF52840-MDK to your computer with a USB cable. Use <code>pyocd-flashtool -l</code> to get the <em>boardId</em>:</p>
+<div class="codehilite"><pre><span></span>$ pyocd-flashtool -l
+
+WARNING:root:Unsupported board found <span class="m">1026</span>
+<span class="nv">0</span> <span class="o">=</span>&gt; Unknown Board <span class="o">[</span>cortex_m<span class="o">]</span> <span class="nv">boardId</span> <span class="o">=</span>&gt; 10260000083ab20300000000000000000000000097969902
+</pre></div>
+
+<p>Flash the OpenThread NCP FTD hex file onto the nRF52840-MDK, using the <em>boardId</em>:</p>
+<div class="codehilite"><pre><span></span>$ pyocd-flashtool -t nrf52 -b 10260000083ab20300000000000000000000000097969902 -ce ot-ncp-ftd.hex
+</pre></div>
+
+<p><img alt="" src="./images/flash_ot-ncp-ftd_hex.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Label the board <strong>NCP</strong> so that later you don't confuse the board roles.</p>
+</div>
+<h3 id="configure-wpantund">Configure wpantund<a class="headerlink" href="#configure-wpantund" title="Permanent link">&para;</a></h3>
+<p>In the NCP design, use <code>wpantund</code> to communicate with and manage the Thread device.</p>
+<p>In a terminal window, start <code>wpantund</code> on the serial port with the NCP, creating the interface <code>utun7</code> and enabling info logs:</p>
+<div class="codehilite"><pre><span></span>$ sudo /usr/local/sbin/wpantund -o Config:NCP:SocketPath /dev/cu.usbmodem14112  <span class="se">\</span>
+        -o Config:TUN:InterfaceName utun7 <span class="se">\</span>
+        -o Daemon:SyslogMask <span class="s2">&quot; -info&quot;</span>
+</pre></div>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To configure wpantund without using command line parameters, modify the <code>/etc/wpantund.conf</code> file.</p>
+</div>
+<p>Output similar to the following is generated upon success:</p>
+<div class="codehilite"><pre><span></span>Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Starting wpantund <span class="m">0</span>.08.00d <span class="o">(</span>Jun  <span class="m">9</span> <span class="m">2018</span> <span class="m">00</span>:31:51<span class="o">)</span> . . .
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;:  <span class="nv">SOURCE_VERSION</span> <span class="o">=</span> <span class="m">0</span>.07.01-217-g86d29d6
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;:  <span class="nv">BUILD_VERSION</span> <span class="o">=</span> <span class="m">0</span>.07.01-217-g86d29d6
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Configuration file <span class="s2">&quot;/etc/wpantund.conf&quot;</span> read.
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Ready. Using DBUS bus <span class="s2">&quot;:1.2&quot;</span>
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Running as root without dropping privileges!
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: State change: <span class="s2">&quot;uninitialized&quot;</span> -&gt; <span class="s2">&quot;offline&quot;</span>
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: NCP is running <span class="s2">&quot;OPENTHREAD/20170716-00584-ge4f5f240-dirty; NRF52840; Jun  8 2018 23:36:19&quot;</span>
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Driver is running <span class="s2">&quot;0.08.00d (0.07.01-217-g86d29d6; Jun  9 2018 00:31:51)&quot;</span>
+<span class="m">1</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Network is not joinable
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Resetting interface<span class="o">(</span>s<span class="o">)</span>. . .
+Jun  <span class="m">9</span> <span class="m">01</span>:29:49  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Finished initializing NCP
+</pre></div>
+
+<p>Leave this terminal window open so that logs from wpantund can be viewed.</p>
+<p>A user-defined interface is required to communicate with the NCP using <code>wpanctl</code>. Open a new terminal window and using <code>wpanctl</code>, connect to the interface you just set up:</p>
+<div class="codehilite"><pre><span></span>$ sudo /usr/local/bin/wpanctl -I utun7
+wpanctl:utun7&gt;
+</pre></div>
+
+<h3 id="verify-build">Verify build<a class="headerlink" href="#verify-build" title="Permanent link">&para;</a></h3>
+<p>Verify that the NCP is successfully running OpenThread:</p>
+<p><img alt="" src="./images/verify_ncp_build.png" /></p>
+<h2 id="set-up-the-ftds">Set up the FTDs<a class="headerlink" href="#set-up-the-ftds" title="Permanent link">&para;</a></h2>
+<p>The other two Thread nodes used in this section are Full Thread Devices (FTDs) on the standard System-on-Chip (SoC) design. They do not use <code>wpantund</code>, and the user manually manages them with the OpenThread CLI.</p>
+<p>One device functions as the Commissioner, to securely authenticate and commission devices onto that network. The other device functions as a Joiner that the Commissioner can authenticate to the Thread network.</p>
+<h3 id="build-and-flash_1">Build and flash<a class="headerlink" href="#build-and-flash_1" title="Permanent link">&para;</a></h3>
+<p>Build the OpenThread FTD example for the nRF52840-MDK, with the Commissioner and Joiner roles enabled:</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> ~/openthread
+$ make -f examples/Makefile-nrf52840 clean
+$ make -f examples/Makefile-nrf52840 <span class="nv">COMMISSIONER</span><span class="o">=</span><span class="m">1</span> <span class="nv">JOINER</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ideally, you should build OpenThread with only the desired functionality enabled. For example, the FTD Joiner would only use the <code>JOINER=1</code> switch. For ease of use here, build a single image with both roles so that the image can be used for both FTDs.</p>
+</div>
+<p>Navigate to the directory with the OpenThread Full Thread Device (FTD) CLI binary, and convert it to hex format:</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> ~/openthread/output/nrf52840/bin
+$ arm-none-eabi-objcopy -O ihex ot-cli-ftd ot-cli-ftd.hex
+</pre></div>
+
+<p>Connect another nRF52840-MDK to your computer with a USB cable. Use <code>pyocd-flashtool -l</code> to get the <em>boardId</em>:</p>
+<p><div class="codehilite"><pre><span></span>$ pyocd-flashtool -l
+WARNING:root:Unsupported board found <span class="m">1026</span>
+WARNING:root:Unsupported board found <span class="m">1026</span>
+<span class="nv">0</span> <span class="o">=</span>&gt; Unknown Board <span class="o">[</span>cortex_m<span class="o">]</span> <span class="nv">boardId</span> <span class="o">=</span>&gt; 10260000083ac27f00000000000000000000000097969902
+<span class="nv">1</span> <span class="o">=</span>&gt; Unknown Board <span class="o">[</span>cortex_m<span class="o">]</span> <span class="nv">boardId</span> <span class="o">=</span>&gt; 10260000083ab20300000000000000000000000097969902
+</pre></div>
+Flash the OpenThread CLI FTD hex file onto the nRF52840-MDK, using the <em>boardId</em>:</p>
+<div class="codehilite"><pre><span></span>$ pyocd-flashtool -t nrf52 -b 10260000083ac27f00000000000000000000000097969902 -ce ot-cli-ftd.hex
+</pre></div>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Label the board <strong>Commissioner</strong>.</p>
+</div>
+<h3 id="verify-build_1">Verify build<a class="headerlink" href="#verify-build_1" title="Permanent link">&para;</a></h3>
+<p>Verify a successful build by accessing the OpenThread CLI using GNU Screen from a terminal window. The nRF52840-MDK boards use a baud rate of <code>115200</code>.</p>
+<div class="codehilite"><pre><span></span>$ screen /dev/cu.usbmodem142112 <span class="m">115200</span>
+</pre></div>
+
+<p>In the new window, press <kbd>Return</kbd> on the keyboard a few times to bring up the OpenThread CLI <code>&gt;</code> prompt. Check for IPv6 addresses:</p>
+<div class="codehilite"><pre><span></span>&gt; ipaddr
+fd11:2233:4455:0:99ea:1fe9:acd6:d384
+fe80:0:0:0:2003:a240:810f:1598
+Done
+</pre></div>
+
+<h3 id="set-up-the-ftd-joiner">Set up the FTD Joiner<a class="headerlink" href="#set-up-the-ftd-joiner" title="Permanent link">&para;</a></h3>
+<p>Repeat the above process to flash the third nRF52840-MDK board, using the existing <code>ot-cli-ftd.hex</code> build. Then label the board <strong>Joiner</strong>.</p>
+<p>Open a new terminal window, and then access the OpenThread CLI for the FTD Joiner:</p>
+<div class="codehilite"><pre><span></span>$ screen /dev/cu.usbmodem142412 <span class="m">115200</span>
+</pre></div>
+
+<p>In this new window, press <kbd>Return</kbd> on the keyboard a few times to bring up the OpenThread CLI <code>&gt;</code> prompt. Check for IPv6 addresses:</p>
+<div class="codehilite"><pre><span></span>&gt; ipaddr
+fe80:0:0:0:d079:7d86:6413:4f4e
+fd11:2233:4455:0:e839:eb52:f7ec:74e3
+Done
+</pre></div>
+
+<h2 id="create-the-thread-network">Create the Thread network<a class="headerlink" href="#create-the-thread-network" title="Permanent link">&para;</a></h2>
+<p>Now that you have all your terminal windows and screens configured, let's create our Thread network. On the <strong>FTD Commissioner</strong>, configure the network and bring up Thread:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; networkname makerdiary
+Done
+&gt; extpanid <span class="m">1122334455667788</span>
+Done
+&gt; panid 0x1122
+Done
+&gt; masterkey <span class="m">11223344556677881122334455667788</span>
+Done
+&gt; ifconfig up
+Done
+&gt; thread start
+Done
+</pre></div>
+
+<p>After a moment, check the device state. It should be the Leader. Also get the RLOC16 for future reference.</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; state
+leader
+Done
+&gt; rloc16
+<span class="m">3400</span>
+Done
+</pre></div>
+
+<p>Check the device's IPv6 addresses:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; ipaddr
+fd11:2233:4455:0:0:ff:fe00:fc00        <span class="c1"># Leader Anycast Locator (ALOC)</span>
+fd11:2233:4455:0:0:ff:fe00:3400        <span class="c1"># Routing Locator (RLOC)</span>
+fd11:2233:4455:0:99ea:1fe9:acd6:d384   <span class="c1"># Mesh-Local EID (ML-EID)</span>
+fe80:0:0:0:2003:a240:810f:1598         <span class="c1"># Link-Local Address (LLA)</span>
+Done
+</pre></div>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A single Thread node has multiple IPv6 addresses. For more information, see <a href="https://openthread.io/guides/thread_primer/ipv6_addressing#unicast_address_types">IPv6 Addressing</a>.</p>
+</div>
+<p>The "makerdiary" network is now visible when scanned from other Thread devices.</p>
+<p>From <code>wpanctl</code> on the <strong>NCP Joiner</strong>:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## NCP Joiner ##</span>
+----------------
+
+wpanctl:utun7&gt; scan
+   <span class="p">|</span> Joinable <span class="p">|</span> NetworkName        <span class="p">|</span> PAN ID <span class="p">|</span> Ch <span class="p">|</span> XPanID           <span class="p">|</span> HWAddr           <span class="p">|</span> RSSI
+---+----------+--------------------+--------+----+------------------+------------------+------
+ <span class="m">1</span> <span class="p">|</span>       NO <span class="p">|</span> <span class="s2">&quot;makerdiary&quot;</span>       <span class="p">|</span> 0x1122 <span class="p">|</span> <span class="m">11</span> <span class="p">|</span> <span class="m">1122334455667788</span> <span class="p">|</span> 2203A240810F1598 <span class="p">|</span>  -59
+</pre></div>
+
+<p>From the OpenThread CLI on the <strong>FTD Joiner</strong>:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; scan
+<span class="p">|</span> J <span class="p">|</span> Network Name     <span class="p">|</span> Extended PAN     <span class="p">|</span> PAN  <span class="p">|</span> MAC Address      <span class="p">|</span> Ch <span class="p">|</span> dBm <span class="p">|</span> LQI <span class="p">|</span>
++---+------------------+------------------+------+------------------+----+-----+-----+
+&gt; <span class="p">|</span> <span class="m">0</span> <span class="p">|</span> makerdiary       <span class="p">|</span> <span class="m">1122334455667788</span> <span class="p">|</span> <span class="m">1122</span> <span class="p">|</span> 2203a240810f1598 <span class="p">|</span> <span class="m">11</span> <span class="p">|</span> -32 <span class="p">|</span> <span class="m">244</span> <span class="p">|</span>
+Done
+</pre></div>
+
+<p>If the <code>makerdiary</code> network doesn't appear in the list, try scanning again.</p>
+<p>You may note that in both scans, the network seems to be not joinable (<em>Joinable</em> column on the NCP Joiner, <em>J</em> column on the FTD Joiner). This only means that Thread Commissioning is not active on the network. It can still be joined out-of-band, by entering the network master key in the joiner device manually.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In-band commissioning is when network credentials are transferred to the joiner over the radio. Out-of-band commissioning is when they are given to the joiner by other means (for example, manual entry in the OpenThread CLI).</p>
+</div>
+<h2 id="add-the-ncp-joiner">Add the NCP Joiner<a class="headerlink" href="#add-the-ncp-joiner" title="Permanent link">&para;</a></h2>
+<p>Let's add the NCP Joiner to the Thread network we just created, using an out-of-band process. Scan for networks on the <strong>NCP Joiner</strong>:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## NCP Joiner ##</span>
+----------------
+
+wpanctl:utun7&gt; scan
+   <span class="p">|</span> Joinable <span class="p">|</span> NetworkName        <span class="p">|</span> PAN ID <span class="p">|</span> Ch <span class="p">|</span> XPanID           <span class="p">|</span> HWAddr           <span class="p">|</span> RSSI
+---+----------+--------------------+--------+----+------------------+------------------+------
+ <span class="m">1</span> <span class="p">|</span>       NO <span class="p">|</span> <span class="s2">&quot;makerdiary&quot;</span>       <span class="p">|</span> 0x1122 <span class="p">|</span> <span class="m">11</span> <span class="p">|</span> <span class="m">1122334455667788</span> <span class="p">|</span> EE7A6D71FB28C60D <span class="p">|</span>  -68
+</pre></div>
+
+<p>To join, set the network master key on the NCP Joiner and join network 1 (the ID in the first column of the <code>scan</code> output):</p>
+<div class="codehilite"><pre><span></span><span class="c1">## NCP Joiner ##</span>
+----------------
+
+wpanctl:utun7&gt; setprop Network:Key <span class="m">11223344556677881122334455667788</span>
+wpanctl:utun7&gt; join <span class="m">1</span>
+Joining <span class="s2">&quot;makerdiary&quot;</span> <span class="m">1122334455667788</span> as node <span class="nb">type</span> <span class="s2">&quot;end-device&quot;</span>
+Successfully Joined!
+</pre></div>
+
+<p>Check the status of the NCP Joiner to verify. It might take a few seconds for all IPv6 addresses to appear in the output.</p>
+<div class="codehilite"><pre><span></span><span class="c1">## NCP Joiner ##</span>
+----------------
+
+wpanctl:utun7&gt; status
+<span class="nv">utun7</span> <span class="o">=</span>&gt; <span class="o">[</span>
+    <span class="s2">&quot;NCP:State&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;associated&quot;</span>
+    <span class="s2">&quot;Daemon:Enabled&quot;</span> <span class="o">=</span>&gt; <span class="nb">true</span>
+    <span class="s2">&quot;NCP:Version&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;OPENTHREAD/20170716-00650-g631557e8-dirty; NRF52840; Jun  9 2018 15:45:03&quot;</span>
+    <span class="s2">&quot;Daemon:Version&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;0.08.00d (0.07.01-217-g86d29d6; Jun  9 2018 00:31:51)&quot;</span>
+    <span class="s2">&quot;Config:NCP:DriverName&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;spinel&quot;</span>
+    <span class="s2">&quot;NCP:HardwareAddress&quot;</span> <span class="o">=</span>&gt; <span class="o">[</span>9019EC5D617D7AAB<span class="o">]</span>
+    <span class="s2">&quot;NCP:Channel&quot;</span> <span class="o">=</span>&gt; <span class="m">11</span>
+    <span class="s2">&quot;Network:NodeType&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;end-device&quot;</span>
+    <span class="s2">&quot;Network:Name&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;makerdiary&quot;</span>
+    <span class="s2">&quot;Network:XPANID&quot;</span> <span class="o">=</span>&gt; 0x1122334455667788
+    <span class="s2">&quot;Network:PANID&quot;</span> <span class="o">=</span>&gt; 0x1122
+    <span class="s2">&quot;IPv6:LinkLocalAddress&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;fe80::60bd:ff84:2121:344d&quot;</span>
+    <span class="s2">&quot;IPv6:MeshLocalAddress&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;fd11:2233:4455::f:b5e:169b:b875&quot;</span>
+    <span class="s2">&quot;IPv6:MeshLocalPrefix&quot;</span> <span class="o">=</span>&gt; <span class="s2">&quot;fd11:2233:4455::/64&quot;</span>
+    <span class="s2">&quot;com.nestlabs.internal:Network:AllowingJoin&quot;</span> <span class="o">=</span>&gt; <span class="nb">false</span>
+<span class="o">]</span>
+</pre></div>
+
+<p>Make note of the <code>IPv6:MeshLocalAddress</code>, you'll use it later.</p>
+<p>Get the NCP Joiner's RLOC16:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## NCP Joiner ##</span>
+----------------
+
+wpanctl:utun7&gt; getprop Thread:RLOC16
+Thread:RLOC16 <span class="o">=</span> 0x3403
+</pre></div>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use the <code>getprop</code> command by itself to list all available properties and their current values.</p>
+</div>
+<p>Back on the <strong>FTD Commissioner</strong>, check the router and child tables to confirm both devices are part of the same network. Use the RLOC16 to identify the NCP Joiner.</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; router table
+<span class="p">|</span> ID <span class="p">|</span> RLOC16 <span class="p">|</span> Next Hop <span class="p">|</span> Path Cost <span class="p">|</span> LQ In <span class="p">|</span> LQ Out <span class="p">|</span> Age <span class="p">|</span> Extended MAC     <span class="p">|</span>
++----+--------+----------+-----------+-------+--------+-----+------------------+
+<span class="p">|</span> <span class="m">13</span> <span class="p">|</span> 0x3400 <span class="p">|</span>       <span class="m">63</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">0</span> <span class="p">|</span>      <span class="m">0</span> <span class="p">|</span>   <span class="m">0</span> <span class="p">|</span> 2203a240810f1598 <span class="p">|</span>
+
+Done
+&gt; child table
+<span class="p">|</span> ID  <span class="p">|</span> RLOC16 <span class="p">|</span> Timeout    <span class="p">|</span> Age        <span class="p">|</span> LQ In <span class="p">|</span> C_VN <span class="p">|</span>R<span class="p">|</span>S<span class="p">|</span>D<span class="p">|</span>N<span class="p">|</span> Extended MAC     <span class="p">|</span>
++-----+--------+------------+------------+-------+------+-+-+-+-+------------------+
+<span class="p">|</span>   <span class="m">3</span> <span class="p">|</span> 0x3403 <span class="p">|</span>        <span class="m">240</span> <span class="p">|</span>         <span class="m">66</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>   <span class="m">86</span> <span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span> 62bdff842121344d <span class="p">|</span>
+
+Done
+</pre></div>
+
+<p>Ping the mesh-local address of the NCP Joiner (the <code>IPv6:MeshLocalAddress</code> attribute from the NCP Joiner's <code>status</code> output) to verify connectivity:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; ping fd11:2233:4455::f:b5e:169b:b875
+&gt; <span class="m">8</span> bytes from fd11:2233:4455:0:f:b5e:169b:b875: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">hlim</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>35ms
+</pre></div>
+
+<p>We now have a Thread network consisting of two nodes, illustrated by this topology diagram:</p>
+<p><img alt="" src="./images/ncp_ftd_topology.png" /></p>
+<h2 id="commission-the-ftd-joiner">Commission the FTD Joiner<a class="headerlink" href="#commission-the-ftd-joiner" title="Permanent link">&para;</a></h2>
+<p>Now let's add the third Thread device to the "makerdiary" network. This time we're going to use the more secure in-band commissioning process. On the <strong>FTD Joiner</strong>, scan for the network:</p>
+<div class="codehilite"><pre><span></span>## FTD Joiner ##
+----------------
+
+&gt; scan
+| J | Network Name     | Extended PAN     | PAN  | MAC Address      | Ch | dBm | LQI |
++---+------------------+------------------+------+------------------+----+-----+-----+
+&gt; | 0 | makerdiary       | 1122334455667788 | 1122 | 2203a240810f1598 | 11 | -32 | 244 |
+Done
+</pre></div>
+
+<p>A <code>0</code> in the J column indicates that Thread Commissioning is not active on the device.</p>
+<p>Let's be specific when commissioning on this next device, and only allow the FTD Joiner to join. Still on the FTD Joiner, get the <code>eui64</code>, so the FTD Commissioner can identify it:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; eui64
+31ae3e8e7b87cfd6
+Done
+</pre></div>
+
+<p>On the <strong>FTD Commissioner</strong>, start the commissioner and specify the <code>eui64</code> of the device that can join, along with the Joiner Credential. The Joiner Credential is a device-specific passphrase.</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; commissioner start
+Done
+&gt; commissioner joiner add 31ae3e8e7b87cfd6 J01NME
+Done
+</pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you get an error when run the <code>commissioner joiner</code> command, stop and restart the commissioner role with <code>commissioner stop</code> and <code>commissioner start</code>, then try the <code>commissioner joiner</code> command again.</p>
+</div>
+<p>Switch to the <strong>FTD Joiner</strong>, and rescan:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; scan
+<span class="p">|</span> J <span class="p">|</span> Network Name     <span class="p">|</span> Extended PAN     <span class="p">|</span> PAN  <span class="p">|</span> MAC Address      <span class="p">|</span> Ch <span class="p">|</span> dBm <span class="p">|</span> LQI <span class="p">|</span>
++---+------------------+------------------+------+------------------+----+-----+-----+
+&gt; <span class="p">|</span> <span class="m">1</span> <span class="p">|</span> makerdiary       <span class="p">|</span> <span class="m">1122334455667788</span> <span class="p">|</span> <span class="m">1122</span> <span class="p">|</span> 2203a240810f1598 <span class="p">|</span> <span class="m">11</span> <span class="p">|</span> -32 <span class="p">|</span> <span class="m">244</span> <span class="p">|</span>
+Done
+</pre></div>
+
+<p>As indicated by the <code>1</code> in the J column, Thread Commissioning is now active on the network. Start the joiner role with the Joiner Credential you just set up on the FTD Commissioner:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; ifconfig up
+Done
+&gt; joiner start J01NME
+Done
+</pre></div>
+
+<p>Within a minute or so, you get a confirmation of a successful authentication:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt;Join success
+</pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you wait too long (more than a few minutes) to start the joiner role on the FTD Joiner, the commissioner may time out and the join fail. Stop and restart the commissioner and try it again.</p>
+</div>
+<p>Bring up Thread so the FTD Joiner joins the <code>makerdiary</code> network, and immediately check the state and RLOC16:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; thread start
+Done
+&gt; state
+child
+Done
+&gt; rloc16
+<span class="m">3404</span>
+Done
+</pre></div>
+
+<p>Check the device's IPv6 addresses. Notice that there is no ALOC. That's because this device is not the Leader, nor does it hold an Anycast-specific role that requires an ALOC.</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; ipaddr
+fd11:2233:4455:0:0:ff:fe00:3404
+fe80:0:0:0:7827:55cf:47e4:5907
+fd11:2233:4455:0:e839:eb52:f7ec:74e3
+Done
+</pre></div>
+
+<p>Immediately switch to the <strong>FTD Commissioner</strong> and check the router and child tables to confirm that three devices exist in the <code>makerdiary</code> network:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; router table
+<span class="p">|</span> ID <span class="p">|</span> RLOC16 <span class="p">|</span> Next Hop <span class="p">|</span> Path Cost <span class="p">|</span> LQ In <span class="p">|</span> LQ Out <span class="p">|</span> Age <span class="p">|</span> Extended MAC     <span class="p">|</span>
++----+--------+----------+-----------+-------+--------+-----+------------------+
+<span class="p">|</span> <span class="m">13</span> <span class="p">|</span> 0x3400 <span class="p">|</span>       <span class="m">63</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">0</span> <span class="p">|</span>      <span class="m">0</span> <span class="p">|</span>   <span class="m">0</span> <span class="p">|</span> 2203a240810f1598 <span class="p">|</span>
+
+Done
+&gt; child table
+<span class="p">|</span> ID  <span class="p">|</span> RLOC16 <span class="p">|</span> Timeout    <span class="p">|</span> Age        <span class="p">|</span> LQ In <span class="p">|</span> C_VN <span class="p">|</span>R<span class="p">|</span>S<span class="p">|</span>D<span class="p">|</span>N<span class="p">|</span> Extended MAC     <span class="p">|</span>
++-----+--------+------------+------------+-------+------+-+-+-+-+------------------+
+<span class="p">|</span>   <span class="m">3</span> <span class="p">|</span> 0x3403 <span class="p">|</span>        <span class="m">240</span> <span class="p">|</span>        <span class="m">231</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>   <span class="m">86</span> <span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span> 62bdff842121344d <span class="p">|</span>
+<span class="p">|</span>   <span class="m">4</span> <span class="p">|</span> 0x3404 <span class="p">|</span>        <span class="m">240</span> <span class="p">|</span>         <span class="m">49</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>   <span class="m">88</span> <span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span> 7a2755cf47e45907 <span class="p">|</span>
+
+Done
+</pre></div>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>It's possible that by the time you check the router and child tables, you see two Routers and one End Device (child). If so, don't worry! You did nothing wrong. Continue on to learn why this happened.</p>
+</div>
+<p>Based on the RLOC16, the FTD Joiner has attached to the network as an End Device (child). Here is our updated topology:</p>
+<p><img alt="" src="./images/thread_topology_updated.png" /></p>
+<h2 id="thread-in-action">Thread in action<a class="headerlink" href="#thread-in-action" title="Permanent link">&para;</a></h2>
+<p>The Thread devices in this documentation are a specific kind of Full Thread Device (FTD) called a Router Eligible End Device (REED). This means they can function as either a Router or End Device, and can promote themselves from an End Device to a Router.</p>
+<p>Thread can support up to 32 Routers, but tries to keep the number of Routers between 16 and 23. If a REED attaches as an End Device (child) and the number of Routers is below 16, after a random time period within two minutes it automatically promotes itself to a Router.</p>
+<p>If you had two children in your Thread network after adding the FTD Joiner, wait at least two minutes, and then recheck the router and child tables on the <strong>FTD Commissioner</strong>:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; router table
+<span class="p">|</span> ID <span class="p">|</span> RLOC16 <span class="p">|</span> Next Hop <span class="p">|</span> Path Cost <span class="p">|</span> LQ In <span class="p">|</span> LQ Out <span class="p">|</span> Age <span class="p">|</span> Extended MAC     <span class="p">|</span>
++----+--------+----------+-----------+-------+--------+-----+------------------+
+<span class="p">|</span> <span class="m">13</span> <span class="p">|</span> 0x3400 <span class="p">|</span>       <span class="m">63</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">0</span> <span class="p">|</span>      <span class="m">0</span> <span class="p">|</span>   <span class="m">0</span> <span class="p">|</span> 2203a240810f1598 <span class="p">|</span>
+<span class="p">|</span> <span class="m">61</span> <span class="p">|</span> 0xf400 <span class="p">|</span>       <span class="m">63</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>      <span class="m">3</span> <span class="p">|</span>  <span class="m">10</span> <span class="p">|</span> 7a2755cf47e45907 <span class="p">|</span>
+
+Done
+&gt; child table
+<span class="p">|</span> ID  <span class="p">|</span> RLOC16 <span class="p">|</span> Timeout    <span class="p">|</span> Age        <span class="p">|</span> LQ In <span class="p">|</span> C_VN <span class="p">|</span>R<span class="p">|</span>S<span class="p">|</span>D<span class="p">|</span>N<span class="p">|</span> Extended MAC     <span class="p">|</span>
++-----+--------+------------+------------+-------+------+-+-+-+-+------------------+
+<span class="p">|</span>   <span class="m">3</span> <span class="p">|</span> 0x3403 <span class="p">|</span>        <span class="m">240</span> <span class="p">|</span>        <span class="m">109</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>   <span class="m">86</span> <span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span> 62bdff842121344d <span class="p">|</span>
+
+Done
+</pre></div>
+
+<p>The FTD Joiner (Extended MAC = <code>7a2755cf47e45907</code>) has promoted itself to a Router. Note that the RLOC16 is different (<code>f400</code> instead of <code>3404</code>). That's because the RLOC16 is based on the Router ID and Child ID of a device. When it transitions from End Device to Router, its Router ID and Child ID values change, and so does the RLOC16.</p>
+<p><img alt="" src="./images/promoting_end_to_router.png" /></p>
+<p>Confirm the new state and RLOC16 on the <strong>FTD Joiner</strong>:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; state
+router
+Done
+&gt; rloc16
+f400
+Done
+</pre></div>
+
+<h3 id="downgrade-the-ftd-joiner">Downgrade the FTD Joiner<a class="headerlink" href="#downgrade-the-ftd-joiner" title="Permanent link">&para;</a></h3>
+<p>You can test this behavior by manually downgrading the <strong>FTD Joiner</strong> from a Router back to an End Device. Change the state to child and check the RLOC16:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; state child
+Done
+&gt; rloc16
+<span class="m">3406</span>
+Done
+&gt; state
+child
+Done
+</pre></div>
+
+<p><img alt="" src="./images/downgrade_ftd_joiner.png" /></p>
+<p>Back on the FTD Commissioner, the FTD Joiner should now appear in the child table (ID = 6). It may even be in both while it transitions:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; router table
+<span class="p">|</span> ID <span class="p">|</span> RLOC16 <span class="p">|</span> Next Hop <span class="p">|</span> Path Cost <span class="p">|</span> LQ In <span class="p">|</span> LQ Out <span class="p">|</span> Age <span class="p">|</span> Extended MAC     <span class="p">|</span>
++----+--------+----------+-----------+-------+--------+-----+------------------+
+<span class="p">|</span> <span class="m">13</span> <span class="p">|</span> 0x3400 <span class="p">|</span>       <span class="m">63</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">0</span> <span class="p">|</span>      <span class="m">0</span> <span class="p">|</span>   <span class="m">0</span> <span class="p">|</span> 2203a240810f1598 <span class="p">|</span>
+<span class="p">|</span> <span class="m">61</span> <span class="p">|</span> 0xf400 <span class="p">|</span>       <span class="m">63</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">0</span> <span class="p">|</span>      <span class="m">0</span> <span class="p">|</span>  <span class="m">16</span> <span class="p">|</span> 7a2755cf47e45907 <span class="p">|</span>
+
+Done
+&gt; child table
+<span class="p">|</span> ID  <span class="p">|</span> RLOC16 <span class="p">|</span> Timeout    <span class="p">|</span> Age        <span class="p">|</span> LQ In <span class="p">|</span> C_VN <span class="p">|</span>R<span class="p">|</span>S<span class="p">|</span>D<span class="p">|</span>N<span class="p">|</span> Extended MAC     <span class="p">|</span>
++-----+--------+------------+------------+-------+------+-+-+-+-+------------------+
+<span class="p">|</span>   <span class="m">3</span> <span class="p">|</span> 0x3403 <span class="p">|</span>        <span class="m">240</span> <span class="p">|</span>         <span class="m">62</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>   <span class="m">86</span> <span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span> 62bdff842121344d <span class="p">|</span>
+<span class="p">|</span>   <span class="m">6</span> <span class="p">|</span> 0x3406 <span class="p">|</span>        <span class="m">240</span> <span class="p">|</span>         <span class="m">25</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>   <span class="m">89</span> <span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span> 7a2755cf47e45907 <span class="p">|</span>
+
+Done
+</pre></div>
+
+<p>After some time, it will switch back to a Router with an RLOC of <code>f400</code>.</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; state
+router
+Done
+&gt; rloc16
+f400
+Done
+</pre></div>
+
+<p><img alt="" src="./images/end_back_to_router.png" /></p>
+<h3 id="remove-the-leader">Remove the Leader<a class="headerlink" href="#remove-the-leader" title="Permanent link">&para;</a></h3>
+<p>The Leader is self-elected among all Thread Routers. This means if the current Leader is removed from the Thread network, one of the other Routers will become the new Leader.</p>
+<p>On the <strong>FTD Commissioner</strong>, shut down Thread to remove it from the Thread network:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; thread stop
+Done
+&gt; ifconfig down
+Done
+</pre></div>
+
+<p>Within two minutes, the <strong>FTD Joiner</strong> becomes the new Thread leader. Check the state and IPv6 addresses of the FTD Joiner to verify:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; state
+leader
+Done
+&gt; ipaddr
+fd11:2233:4455:0:0:ff:fe00:fc00       <span class="c1"># Now it has the Leader ALOC!</span>
+fd11:2233:4455:0:0:ff:fe00:f400
+fe80:0:0:0:7827:55cf:47e4:5907
+fd11:2233:4455:0:e839:eb52:f7ec:74e3
+Done
+</pre></div>
+
+<p><img alt="" src="./images/remove_the_leader.png" /></p>
+<p>Check the child table. Notice that there's a new RLOC16. This is the NCP Joiner, as indicated by its ID and Extended MAC. In order to keep the Thread network together, it has switched parent Routers, from the FTD Commissioner to the FTD Joiner. This results in a new RLOC16 for the NCP Joiner (because its Router ID changed, from 13 to 61).</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; child table
+<span class="p">|</span> ID  <span class="p">|</span> RLOC16 <span class="p">|</span> Timeout    <span class="p">|</span> Age        <span class="p">|</span> LQ In <span class="p">|</span> C_VN <span class="p">|</span>R<span class="p">|</span>S<span class="p">|</span>D<span class="p">|</span>N<span class="p">|</span> Extended MAC     <span class="p">|</span>
++-----+--------+------------+------------+-------+------+-+-+-+-+------------------+
+<span class="p">|</span>   <span class="m">1</span> <span class="p">|</span> 0xf401 <span class="p">|</span>        <span class="m">240</span> <span class="p">|</span>         <span class="m">21</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>   <span class="m">36</span> <span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span> 62bdff842121344d <span class="p">|</span>
+
+Done
+</pre></div>
+
+<p>You may have to wait a few minutes for the <strong>NCP Joiner</strong> to attach to the FTD Joiner as a child. If you have the <strong>wpantund</strong> window visible, there should be new output as it associates with a new parent:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## wpantund ##</span>
+--------------
+
+Jun  <span class="m">9</span> <span class="m">16</span>:12:53  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Node <span class="nb">type</span> change: <span class="s2">&quot;end-device&quot;</span> -&gt; <span class="s2">&quot;unknown&quot;</span>
+Jun  <span class="m">9</span> <span class="m">16</span>:12:53  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: State change: <span class="s2">&quot;associated&quot;</span> -&gt; <span class="s2">&quot;associated:no-parent&quot;</span>
+Jun  <span class="m">9</span> <span class="m">16</span>:12:53  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Taking interface<span class="o">(</span>s<span class="o">)</span> down. . .
+Jun  <span class="m">9</span> <span class="m">16</span>:14:14  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: State change: <span class="s2">&quot;associated:no-parent&quot;</span> -&gt; <span class="s2">&quot;associated&quot;</span>
+Jun  <span class="m">9</span> <span class="m">16</span>:14:14  wpantund<span class="o">[</span><span class="m">12257</span><span class="o">]</span> &lt;Notice&gt;: Node <span class="nb">type</span> change: <span class="s2">&quot;unknown&quot;</span> -&gt; <span class="s2">&quot;end-device&quot;</span>
+</pre></div>
+
+<p>Switch to the NCP Joiner and check the RLOC16 to confirm that it has changed:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## NCP Joiner ##</span>
+----------------
+
+wpanctl:utun7&gt; getprop Thread:RLOC16
+Thread:RLOC16 <span class="o">=</span> 0xF401
+</pre></div>
+
+<h3 id="reattach-the-ftd-commissioner">Reattach the FTD Commissioner<a class="headerlink" href="#reattach-the-ftd-commissioner" title="Permanent link">&para;</a></h3>
+<p>A Thread network with two nodes isn't much fun. Let's bring the FTD Commissioner back online.</p>
+<p>On the <strong>FTD Commissioner</strong>, restart Thread:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; ifconfig up
+Done
+&gt; thread start
+Done
+</pre></div>
+
+<p>Within two minutes, it automatically reattaches to the <code>makerdiary</code> network as an End Device, and then promotes itself to a Router.</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; state
+child
+Done
+&gt; state
+router
+Done
+</pre></div>
+
+<p>Check the router and child tables on the <strong>FTD Joiner</strong> to verify:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; router table
+<span class="p">|</span> ID <span class="p">|</span> RLOC16 <span class="p">|</span> Next Hop <span class="p">|</span> Path Cost <span class="p">|</span> LQ In <span class="p">|</span> LQ Out <span class="p">|</span> Age <span class="p">|</span> Extended MAC     <span class="p">|</span>
++----+--------+----------+-----------+-------+--------+-----+------------------+
+<span class="p">|</span> <span class="m">13</span> <span class="p">|</span> 0x3400 <span class="p">|</span>       <span class="m">63</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>      <span class="m">3</span> <span class="p">|</span>   <span class="m">6</span> <span class="p">|</span> 2203a240810f1598 <span class="p">|</span>
+<span class="p">|</span> <span class="m">61</span> <span class="p">|</span> 0xf400 <span class="p">|</span>       <span class="m">63</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">0</span> <span class="p">|</span>      <span class="m">0</span> <span class="p">|</span>   <span class="m">0</span> <span class="p">|</span> 7a2755cf47e45907 <span class="p">|</span>
+
+Done
+&gt; child table
+<span class="p">|</span> ID  <span class="p">|</span> RLOC16 <span class="p">|</span> Timeout    <span class="p">|</span> Age        <span class="p">|</span> LQ In <span class="p">|</span> C_VN <span class="p">|</span>R<span class="p">|</span>S<span class="p">|</span>D<span class="p">|</span>N<span class="p">|</span> Extended MAC     <span class="p">|</span>
++-----+--------+------------+------------+-------+------+-+-+-+-+------------------+
+<span class="p">|</span>   <span class="m">1</span> <span class="p">|</span> 0xf401 <span class="p">|</span>        <span class="m">240</span> <span class="p">|</span>         <span class="m">18</span> <span class="p">|</span>     <span class="m">3</span> <span class="p">|</span>   <span class="m">36</span> <span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span><span class="m">1</span><span class="p">|</span> 62bdff842121344d <span class="p">|</span>
+
+Done
+</pre></div>
+
+<p><img alt="" src="./images/reattach_ftd_commissioner.png" /></p>
+<p>Our Thread network consists of three nodes again.</p>
+<div class="admonition tip">
+<p class="admonition-title">Within two minutes...</p>
+<p>120 seconds is the default value of a Thread Network parameter called ROUTER_SELECTION_JITTER. Devices changing from End Device to Router or vice versa delay the change for a random period between 0 and the ROUTER_SELECTION_JITTER (in seconds). See the <a href="http://threadgroup.org/technology/ourtechnology#specifications">Thread Specification</a> for more information on Thread Network parameters.</p>
+</div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>Managing a Thread network with multiple devices on different terminal or Screen windows can be complicated. Use these tips to "reset" the state of the network or your workspace if you encounter issues.</p>
+<h3 id="screen">Screen<a class="headerlink" href="#screen" title="Permanent link">&para;</a></h3>
+<p>If you ever get lost in your configuration (too many Screen windows, or Screens within Screen), keep killing Screen windows with <kbd>Ctrl</kbd> + <kbd>a</kbd> → <kbd>k</kbd> until none exist and <code>screen -ls</code> on the command line outputs <code>No Sockets found</code>. Then recreate Screen windows for each device. Device states are retained even when Screen is killed.</p>
+<h3 id="thread-nodes">Thread nodes<a class="headerlink" href="#thread-nodes" title="Permanent link">&para;</a></h3>
+<p>If the Thread network topology is not as described in this documentation, or nodes disconnect for some reason (perhaps because the host machine powering them went to sleep), it's best to bring down Thread, clear the network credentials, and begin again from the <a href="#create-the-thread-network">Create the Thread network</a> step.</p>
+<p>To reset the FTDs:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner or FTD Joiner ##</span>
+------------------------------------
+
+&gt; thread stop
+Done
+&gt; ifconfig down
+Done
+&gt; factoryreset
+Done
+</pre></div>
+
+<p>To reset the NCP:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## NCP Joiner ##</span>
+----------------
+
+wpanctl:utun7&gt; leave
+Leaving current WPAN. . .
+wpanctl:utun7&gt; reset
+Resetting NCP. . .
+</pre></div>
+
+<h2 id="send-messages-with-udp">Send messages with UDP<a class="headerlink" href="#send-messages-with-udp" title="Permanent link">&para;</a></h2>
+<p>One of the application services that OpenThread provides is User Datagram Protocol (UDP), a Transport Layer protocol. An application built on OpenThread could use the UDP API to pass messages between nodes in a Thread network, or to other devices in an external network (like the internet, if the Thread network features a Border Router).</p>
+<p>UDP sockets are exposed through the OpenThread CLI. Let's use it to pass messages between the two FTDs.</p>
+<p>Get the Mesh-Local EID address for the <strong>FTD Joiner</strong>. We're using this address because it's reachable from anywhere within the Thread network.</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; ipaddr
+fd11:2233:4455:0:0:ff:fe00:fc00        <span class="c1"># Leader Anycast Locator (ALOC)</span>
+fd11:2233:4455:0:0:ff:fe00:f400        <span class="c1"># Routing Locator (RLOC)</span>
+fe80:0:0:0:7827:55cf:47e4:5907         <span class="c1"># Link-Local Address (LLA)</span>
+fd11:2233:4455:0:e839:eb52:f7ec:74e3   <span class="c1"># Mesh-Local EID (ML-EID)</span>
+Done
+</pre></div>
+
+<p>Start UDP and bind it to a socket for any IPv6 address:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; udp open
+Done
+&gt; udp <span class="nb">bind</span> :: <span class="m">1212</span>
+</pre></div>
+
+<p>Switch to the <strong>FTD Commissioner</strong>, start UDP, and connect to the socket you set up on the FTD Joiner, using its ML-EID:</p>
+<div class="codehilite"><pre><span></span>## FTD Commissioner ##
+----------------------
+
+&gt; udp open
+Done
+&gt; udp connect fd11:2233:4455:0:e839:eb52:f7ec:74e3 1212
+Done
+</pre></div>
+
+<p>The UDP connection should be live between the two nodes. Send a message from the FTD Commissioner:</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Commissioner ##</span>
+----------------------
+
+&gt; udp send hello-openthread
+Done
+</pre></div>
+
+<p>On the <strong>FTD Joiner</strong>, the UDP message has been received!</p>
+<div class="codehilite"><pre><span></span><span class="c1">## FTD Joiner ##</span>
+----------------
+
+&gt; <span class="m">16</span> bytes from fd11:2233:4455:0:0:ff:fe00:3400 <span class="m">49153</span> hello-openthread
+</pre></div>
+
+<h2 id="congratulations">Congratulations!<a class="headerlink" href="#congratulations" title="Permanent link">&para;</a></h2>
+<p>You've created a physical Thread network!</p>
+<p><img alt="" src="./images/thread_network.png" /></p>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://openthread.io">openthread.io</a></li>
+<li><a href="https://github.com/openthread/openthread/">github.com/openthread</a></li>
+<li><a href="https://codelabs.developers.google.com/">codelabs.developers.google.com</a></li>
+<li><a href="https://openthread.io/guides/thread_primer/">Thread Primer</a> — covers all the Thread concepts in this documentation</li>
+<li><a href="https://github.com/openthread/openthread/blob/master/src/cli/README.md">OpenThread CLI reference</a></li>
+<li><a href="https://github.com/openthread/openthread/blob/master/src/cli/README_UDP.md">OpenThread UDP CLI reference</a></li>
+<li><a href="https://github.com/openthread/wpantund/blob/c3f43e8fa9670f1688f99a02c7ccc9f1bfaa3718/src/wpantund/wpan-properties.h">wpanctl properties reference</a></li>
+<li><a href="https://openthread.io/reference/group/api-udp">OpenThread UDP API reference</a></li>
+<li><a href="http://aperiodic.net/screen/quick_reference">GNU Screen quick reference</a></li>
+</ul>
+<h2 id="create-an-issue">Create an Issue<a class="headerlink" href="#create-an-issue" title="Permanent link">&para;</a></h2>
+<p>Interested in contributing to this project? Want to report a bug? Feel free and click here:</p>
+<p><a href="https://github.com/makerdiary/nrf52840-mdk/issues/new"><button data-md-color-primary="marsala"><i class="fa fa-github"></i> Create an Issue</button></a></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+              
+                
+
+
+  <h2 id="__comments">Comments</h2>
+  <div id="discourse-comments"></div>
+  <script>DiscourseEmbed={discourseUrl:"https://community.makerdiary.co/",discourseEmbedUrl:"https://wiki.makerdiary.co/nrf52840-mdk/openthread/"},function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src=DiscourseEmbed.discourseUrl+"javascripts/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}()</script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../mesh/" title="nRF5 SDK for Mesh" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                nRF5 SDK for Mesh
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../mbedos/" title="Arm Mbed OS" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Arm Mbed OS
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 <a href="https://makerdiary.com">makerdiary.com</a>
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://makerdiary.com" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/makerdiary" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/makerdiary" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.facebook.com/makerdiary" class="md-footer-social__link fa fa-facebook"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.edf82dcc.js"></script>
+      
+      <script>app.initialize({version:"0.17.2",url:{base:".."}})</script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-54344624-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>
