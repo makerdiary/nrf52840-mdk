@@ -3,7 +3,7 @@
 site_name: nRF52840-MDK Documentation
 site_description: Micro Development Kit for IoT Applications using nRF52840 SoC
 site_author: makerdiary
-site_url: https://wiki.makerdiary.co/nrf52840-mdk/
+site_url: https://wiki.makerdiary.com/nrf52840-mdk/
 
 # Repository
 repo_name: makerdiary/nrf52840-mdk

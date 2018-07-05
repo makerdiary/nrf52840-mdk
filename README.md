@@ -48,16 +48,16 @@ It supports the standard Nordic Software Development Tool-chain using GCC, Keil 
 ## Documentation
 
 We have provided develeopment docs to make it a pleasure to work with nRF52840-MDK. 
-Get what you need here or visit [https://wiki.makerdiary.co/nrf52840-mdk](https://wiki.makerdiary.co/nrf52840-mdk).
+Get what you need here or visit [https://wiki.makerdiary.com/nrf52840-mdk](https://wiki.makerdiary.com/nrf52840-mdk).
 
-* [Getting Started](https://wiki.makerdiary.co/nrf52840-mdk/getting-started/)
-* [Using nRF5 SDK](https://wiki.makerdiary.co/nrf52840-mdk/nrf5-sdk/)
-* [Using nRF5 SDK for Mesh](https://wiki.makerdiary.co/nrf52840-mdk/mesh/)
-* [Using OpenThread](https://wiki.makerdiary.co/nrf52840-mdk/openthread/)
-* [Using Arm Mbed OS](https://wiki.makerdiary.co/nrf52840-mdk/mbedos/)
-* [Using Zephyr](https://wiki.makerdiary.co/nrf52840-mdk/zephyr/)
-* [Using Mynewt](https://wiki.makerdiary.co/nrf52840-mdk/mynewt/)
-* [Using DAPLink](https://wiki.makerdiary.co/nrf52840-mdk/daplink/)
+* [Getting Started](https://wiki.makerdiary.com/nrf52840-mdk/getting-started/)
+* [Using nRF5 SDK](https://wiki.makerdiary.com/nrf52840-mdk/nrf5-sdk/)
+* [Using nRF5 SDK for Mesh](https://wiki.makerdiary.com/nrf52840-mdk/mesh/)
+* [Using OpenThread](https://wiki.makerdiary.com/nrf52840-mdk/openthread/)
+* [Using Arm Mbed OS](https://wiki.makerdiary.com/nrf52840-mdk/mbedos/)
+* [Using Zephyr](https://wiki.makerdiary.com/nrf52840-mdk/zephyr/)
+* [Using Mynewt](https://wiki.makerdiary.com/nrf52840-mdk/mynewt/)
+* [Using DAPLink](https://wiki.makerdiary.com/nrf52840-mdk/daplink/)
 
 ## Hardware Resource
 
@@ -77,7 +77,7 @@ nRF52840-MDK is available on the following channels (click to go directly to the
 
 ## Contributing
 
-We would love for you to contribute to this project and help make it even better than it is today! See our [Contributing Guidelines](https://wiki.makerdiary.co/nrf52840-mdk/CONTRIBUTING) for more information.
+We would love for you to contribute to this project and help make it even better than it is today! See our [Contributing Guidelines](https://wiki.makerdiary.com/nrf52840-mdk/CONTRIBUTING) for more information.
 
 ## License
 
