@@ -71,7 +71,7 @@ nRF52840-MDK is available on the following channels (click to go directly to the
 
 [![makerdiary store](docs/images/makerdiary-store-logo.png)](https://store.makerdiary.com)
 
-[![SeeedStudio](docs/images/seeed_logo_2018_horizontal.png)](https://www.seeedstudio.com/)
+[![SeeedStudio](docs/images/seeed_logo_2018_horizontal.png)](https://www.seeedstudio.com/nRF52840-Micro-Development-Kit-p-3079.html)
 
 [![Tindie](docs/images/tindie-logo.png)](https://www.tindie.com/stores/Zelin/)
 
