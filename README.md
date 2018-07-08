@@ -69,11 +69,11 @@ Get what you need here or visit [https://wiki.makerdiary.com/nrf52840-mdk](https
 
 nRF52840-MDK is available on the following channels (click to go directly to the product):
 
-[![makerdiary store](docs/images/makerdiary-store-logo.png)](https://store.makerdiary.com)
+[![makerdiary store](docs/images/makerdiary-store-logo.png)](https://store.makerdiary.com/collections/frontpage/products/nrf52840-mdk-iot-development-kit)
 
 [![SeeedStudio](docs/images/seeed_logo_2018_horizontal.png)](https://www.seeedstudio.com/nRF52840-Micro-Development-Kit-p-3079.html)
 
-[![Tindie](docs/images/tindie-logo.png)](https://www.tindie.com/stores/Zelin/)
+[![Tindie](docs/images/tindie-logo.png)](https://www.tindie.com/products/Zelin/nrf52840-mdk-iot-development-kit/)
 
 ## Contributing
 
