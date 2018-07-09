@@ -68,7 +68,7 @@ $ cd openthread
 $ ./bootstrap
 ```
 
-Specify platform configuration for nRF52840-MDK by dapting the `openthread/examples/platforms/nrf52840/platform-config.h` file to:
+Specify platform configuration for nRF52840-MDK by adapting the `openthread/examples/platforms/nrf52840/platform-config.h` file to:
 
 ``` c
 /**
