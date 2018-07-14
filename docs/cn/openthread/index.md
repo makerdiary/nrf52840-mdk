@@ -626,10 +626,10 @@ Done
 
 ## 参考资源
 
+* [Build a Thread network with nRF52840 boards and OpenThread](https://codelabs.developers.google.com/codelabs/openthread-hardware/#0) - 涵盖本文提到的所有 Thread 网络构建步骤
 * [openthread.io](https://openthread.io)
 * [github.com/openthread](https://github.com/openthread/openthread/)
-* [codelabs.developers.google.com](https://codelabs.developers.google.com/)
-* [Thread Primer](https://openthread.io/guides/thread_primer/) — covers all the Thread concepts in this documentation
+* [Thread Primer](https://openthread.io/guides/thread_primer/) — 涵盖本文提到的所有 Thread 相关的概念
 * [OpenThread CLI reference](https://github.com/openthread/openthread/blob/master/src/cli/README.md)
 * [OpenThread UDP CLI reference](https://github.com/openthread/openthread/blob/master/src/cli/README_UDP.md)
 * [wpanctl properties reference](https://github.com/openthread/wpantund/blob/c3f43e8fa9670f1688f99a02c7ccc9f1bfaa3718/src/wpantund/wpan-properties.h)
