@@ -169,8 +169,8 @@ Specify the nRF52840-MDK board for the `nrf52840_xxAA` platform by adapting the 
 ...
 
 elseif (PLATFORM STREQUAL "nrf52840_xxAA")
-    set(BOARD "nrf52840_mdk" CACHE STRING "Board to build examples for.")
-    set_property(CACHE BOARD PROPERTY STRINGS "nrf52840_mdk")
+    set(BOARD "pca10056" CACHE STRING "Board to build examples for.")
+    set_property(CACHE BOARD PROPERTY STRINGS "pca10056" "nrf52840_mdk")
 ```
 
 #### Building with CMake

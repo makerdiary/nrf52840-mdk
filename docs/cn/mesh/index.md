@@ -173,8 +173,8 @@ set(nrf52840_mdk_INCLUDE_DIRS
 ...
 
 elseif (PLATFORM STREQUAL "nrf52840_xxAA")
-    set(BOARD "nrf52840_mdk" CACHE STRING "Board to build examples for.")
-    set_property(CACHE BOARD PROPERTY STRINGS "nrf52840_mdk")
+    set(BOARD "pca10056" CACHE STRING "Board to build examples for.")
+    set_property(CACHE BOARD PROPERTY STRINGS "pca10056" "nrf52840_mdk")
 ```
 
 #### 使用 Cmake 构建
