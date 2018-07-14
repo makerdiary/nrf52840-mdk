@@ -636,6 +636,9 @@ Done
 * [OpenThread UDP API reference](https://openthread.io/reference/group/api-udp)
 * [GNU Screen quick reference](http://aperiodic.net/screen/quick_reference)
 
+## License
+本文档使用 [Creative Commons Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0/) 授权，在 Jeff Bumgardner 的[原文](https://codelabs.developers.google.com/codelabs/openthread-hardware/#0)基础上修改发布。
+
 ## 问题反馈
 
 如果在开发过程遇到任何问题，可以通过 [GitHub Issue](https://github.com/makerdiary/nrf52840-mdk/issues) 寻求解决。

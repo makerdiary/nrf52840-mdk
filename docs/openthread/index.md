@@ -683,6 +683,9 @@ You've created a physical Thread network with nRF52840-MDK!
 * [OpenThread UDP API reference](https://openthread.io/reference/group/api-udp)
 * [GNU Screen quick reference](http://aperiodic.net/screen/quick_reference)
 
+## License
+Content on this pages is licensed under the [Creative Commons Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0/). [Origin works](https://codelabs.developers.google.com/codelabs/openthread-hardware/#0) by Jeff Bumgardner at Google.
+
 ## Create an Issue
 
 Interested in contributing to this project? Want to report a bug? Feel free and click here:
