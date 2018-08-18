@@ -2,6 +2,6 @@ sample:
   name: Blinky Sample
 tests:
   test:
-    platform_whitelist: nrf52840_mdk
+    platform_whitelist: nrf52832_mdk
     tags: samples
     depends_on: gpio
