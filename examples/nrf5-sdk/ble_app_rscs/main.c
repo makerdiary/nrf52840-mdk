@@ -917,9 +917,9 @@ static void advertising_init(void)
     init.config.ble_adv_fast_interval    = APP_ADV_INTERVAL;
     init.config.ble_adv_fast_timeout     = APP_ADV_DURATION;
 
-    init.config.ble_adv_primary_phy      = BLE_GAP_PHY_1MBPS;
-    init.config.ble_adv_secondary_phy    = BLE_GAP_PHY_2MBPS;
-    init.config.ble_adv_extended_enabled = true;
+    // init.config.ble_adv_primary_phy      = BLE_GAP_PHY_1MBPS;
+    // init.config.ble_adv_secondary_phy    = BLE_GAP_PHY_2MBPS;
+    // init.config.ble_adv_extended_enabled = true;
 
     init.evt_handler = on_adv_evt;
 
