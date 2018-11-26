@@ -1,8 +1,8 @@
 nrf_sdks/*
 !nrf_sdks/README.md
-.DS_Store/*
-_build/
-build/
+.DS_Store
+_build
+build
 
 BUILD/
 mbed-os/
