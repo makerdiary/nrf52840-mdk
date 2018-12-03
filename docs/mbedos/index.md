@@ -89,7 +89,7 @@ mbed-os-example-blinky$ mbed compile --target NRF52840_MDK --toolchain GCC_ARM
 You can add locally manufacturers id and platform name for nRF52840-MDK and see which boards are connected with `mbed detect`:
 
 ``` sh
-$ mbedls --mock=1026:nRF52840-MDK
+$ mbedls --mock=1026:nRF52840_MDK
 ```
 
 Adding the `--flash` argument will automatically flash the compiled program onto your board if it is connected to your computer.
