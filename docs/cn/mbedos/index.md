@@ -75,7 +75,7 @@ mbed-os-example-blinky$ mbed compile --target NRF52840_MDK --toolchain GCC_ARM -
 如果 `mbed detect` 无法检测到板子，可以运行以下命令添加：
 
 ``` sh
-$ mbedls --mock=1026:nRF52840-MDK
+$ mbedls --mock=1026:nRF52840_MDK
 ```
 
 !!! tip "提示"
