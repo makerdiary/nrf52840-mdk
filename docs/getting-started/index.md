@@ -167,7 +167,7 @@ $ pyocd-flashtool -l
 and then flash the board by running:
 
 ``` sh
-$ pyocd-flashtool -d debug -t nrf52 -se nrf52840_mdk_ble_app_hrs_s140.hex
+$ pyocd-flashtool -t nrf52 -ce ble_app_hrs_nrf52840_mdk_s140.hex
 ```
 
 ![](images/programming_using_pyocd.png)
