@@ -875,19 +875,20 @@
 
 <p><img alt="" src="./images/gnu-make_version.png" /></p>
 <h2 id="installing-the-nrf5-sdk">Installing the nRF5 SDK<a class="headerlink" href="#installing-the-nrf5-sdk" title="Permanent link">&para;</a></h2>
-<p>Download the SDK file <code>nRF5_SDK_v15.0.0_a53641a.zip</code> from <a href="https://developer.nordicsemi.com/">developer.nordicsemi.com</a>.</p>
-<p>The latest version is <code>15.0.0</code>, it can be downloaded directly here:</p>
-<p><a href="http://www.nordicsemi.com/eng/nordic/Products/nRF5-SDK/nRF5-SDK-zip/59011"><button data-md-color-primary="marsala">Download</button></a></p>
+<p>Download the SDK file <code>nRF5_SDK_v15.2.0_9412b96</code> from <a href="https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK/">www.nordicsemi.com</a>.</p>
+<p>The latest version is <code>15.2.0</code>, it can be downloaded directly here:</p>
+<p><a href="https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK/Download#infotabs"><button data-md-color-primary="marsala">Download</button></a></p>
 <p>Extract the zip file to the <code>nrf52840-mdk</code> repository. This should give you the following folder structure:</p>
 <div class="codehilite"><pre><span></span>./nrf52840-mdk/
 ├── LICENSE
 ├── README.md
 ├── firmware
+├── config
 ├── docs
 ├── examples
 ├── mkdocs.yml
 ├── nrf_sdks
-│   └── nRF5_SDK_15.0.0_a53641a
+│   └── nRF5_SDK_v15.2.0_9412b96
 └── tools
 </pre></div>
 
@@ -896,9 +897,9 @@
 </pre></div>
 
 <p>Open the file in a text editor (<a href="https://www.sublimetext.com/">Sublime</a> is recommended), and make sure that the <code>GNU_INSTALL_ROOT</code> variable is pointing to your GNU Arm Embedded Toolchain install directory.</p>
-<div class="codehilite"><pre><span></span>GNU_INSTALL_ROOT :<span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/gcc-arm-none-eabi/gcc-arm-none-eabi-6-2017-q2-update/bin/
-GNU_VERSION :<span class="o">=</span> <span class="m">6</span>.3.1
-GNU_PREFIX :<span class="o">=</span> arm-none-eabi
+<div class="codehilite"><pre><span></span>GNU_INSTALL_ROOT ?<span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/gcc-arm-none-eabi/gcc-arm-none-eabi-6-2017-q2-update/bin/
+GNU_VERSION ?<span class="o">=</span> <span class="m">6</span>.3.1
+GNU_PREFIX ?<span class="o">=</span> arm-none-eabi
 </pre></div>
 
 <h2 id="compiling-and-running-blinky-example">Compiling and running blinky example<a class="headerlink" href="#compiling-and-running-blinky-example" title="Permanent link">&para;</a></h2>
@@ -919,7 +920,7 @@ GNU_PREFIX :<span class="o">=</span> arm-none-eabi
 <p><img alt="" src="./images/blinky_demo.gif" /></p>
 <h2 id="running-examples-that-use-a-softdevice">Running examples that use a SoftDevice<a class="headerlink" href="#running-examples-that-use-a-softdevice" title="Permanent link">&para;</a></h2>
 <p>Before you can run more advanced examples that use <em>Bluetooth</em> or <em>ANT</em>, you must program the SoftDevice on the board.</p>
-<p>The SoftDevice binary is located in folder <code>components/softdevice/&lt;SoftDevice&gt;/hex</code> in the SDK, where <code>&lt;SoftDevice&gt;</code> is the name of the SoftDevice. You can also download SoftDevices from <a href="https://www.nordicsemi.com/eng/Products/nRF52840">nordicsemi.com</a>.</p>
+<p>The SoftDevice binary is located in folder <code>components/softdevice/&lt;SoftDevice&gt;/hex</code> in the SDK, where <code>&lt;SoftDevice&gt;</code> is the name of the SoftDevice. You can also download SoftDevices from <a href="https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK/Download#infotabs">nordicsemi.com</a>.</p>
 <p>The easiest way to program the SoftDevice is using the GCC makefile of an example:</p>
 <ol>
 <li>
@@ -941,7 +942,6 @@ $ make flash_softdevice
 
 <p>Or </p>
 <div class="codehilite"><pre><span></span><span class="c1"># this will program the application with SoftDevice</span>
-$ make
 $ make flash_all
 </pre></div>
 
@@ -953,10 +953,10 @@ $ make flash_all
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p><a href="http://infocenter.nordicsemi.com/topic/com.nordic.infocenter.sdk/dita/sdk/nrf5_sdk.html">Nordic nRF5 SDK</a></p>
+<p><a href="https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK">Nordic nRF5 SDK</a></p>
 </li>
 <li>
-<p><a href="http://infocenter.nordicsemi.com/index.jsp">Nordic Semiconductor Infocenter</a></p>
+<p><a href="https://www.nordicsemi.com/DocLib">Nordic Documentation Library</a></p>
 </li>
 <li>
 <p><a href="https://github.com/makerdiary/nrf52840-mdk">makerdiary/nrf52840-mdk</a></p>
