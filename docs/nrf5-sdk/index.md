@@ -1,6 +1,6 @@
 # nRF5 SDK <br><small>Offical Software Development Kit for nRF51 and nRF52 Series</small>
 
-[![](images/SDK-icon_small.png)](http://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF5-SDK)
+[![](images/SDK-icon_small.png)](https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK/)
 
 ## Introduction
 

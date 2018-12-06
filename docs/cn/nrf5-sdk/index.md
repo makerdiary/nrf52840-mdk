@@ -1,6 +1,6 @@
 # nRF5 SDK <br><small>Nordic 官方针对 nRF5x 系列 SoC 的软件开发包</small>
 
-[![](../../nrf5-sdk/images/SDK-icon_small.png)](http://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF5-SDK)
+[![](../../nrf5-sdk/images/SDK-icon_small.png)](https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK/)
 
 ## 简介
 
@@ -76,9 +76,9 @@ $ sudo apt-get install build-essential checkinstall
 
 ### 安装 nRF5 SDK
 
-你可以直接从 Nordic 官网下载 nRF5 SDK，该软件包以 `.zip` 压缩包的方式发布，例如 `nRF5_SDK_v15.0.0_a53641a.zip`。
+你可以直接从 Nordic 官网下载 nRF5 SDK，最新版本为 `nRF5_SDK_v15.2.0_9412b96`。
 
-<a href="http://www.nordicsemi.com/eng/nordic/Products/nRF5-SDK/nRF5-SDK-zip/59011"><button data-md-color-primary="marsala">下载 nRF5 SDK</button></a>
+<a href="https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK/Download#infotabs"><button data-md-color-primary="marsala">下载 nRF5 SDK</button></a>
 
 你需要将该软件包解压到 `nrf52840-mdk` 仓库，一般目录结构如下：
 
@@ -87,11 +87,12 @@ $ sudo apt-get install build-essential checkinstall
 ├── LICENSE
 ├── README.md
 ├── firmware
+├── config
 ├── docs
 ├── examples
 ├── mkdocs.yml
 ├── nrf_sdks
-│   └── nRF5_SDK_15.0.0_a53641a
+│   └── nRF5_SDK_v15.2.0_9412b96
 └── tools
 ```
 
@@ -140,7 +141,7 @@ $ make flash
 <SDK path>components/softdevice/SoftDevice/hex
 ``` 
 
-或者直接从 [nordicsemi.com](https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF52840) 网站下载。
+或者直接从 [nordicsemi.com](https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK/Download#infotabs) 网站下载。
 
 我们已经在 makefile 提供下载 SoftDevice 的命令，可以直接运行下载：
 
@@ -160,9 +161,9 @@ $ make flash_all
 
 ## 参考资源
 
-* [Nordic nRF5 SDK](http://infocenter.nordicsemi.com/topic/com.nordic.infocenter.sdk/dita/sdk/nrf5_sdk.html)
+* [Nordic nRF5 SDK](https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK)
 
-* [Nordic Semiconductor Infocenter](http://infocenter.nordicsemi.com/index.jsp)
+* [Nordic Documentation Library](https://www.nordicsemi.com/DocLib)
 
 * [makerdiary/nrf52840-mdk](https://github.com/makerdiary/nrf52840-mdk)
 
