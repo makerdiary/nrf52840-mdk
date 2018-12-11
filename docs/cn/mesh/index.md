@@ -1,6 +1,6 @@
 # nRF5 SDK for Mesh <br><small>Nordic 官方的 Bluetooth Mesh 软件开发包</small>
 
-[![](../../mesh/images/mesh_icon_small.png)](http://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF5-SDK-for-Mesh)
+[![](../../mesh/images/mesh_icon_small.png)](https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK-for-Mesh)
 
 ## 简介
 
@@ -12,225 +12,187 @@ mesh 是低功耗蓝牙的一种全新网络拓扑结构选择，于2017年夏�
 
 ![](../../mesh/images/mesh-network_topology.png)
 
-了解更多信息, 可以前往 [nordicsemi.com](http://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF5-SDK-for-Mesh)。
-
-## 快速入门
-
 你可以在 Bluetooth SIG 了解更多关于 Bluetooth Mesh 的介绍：
 
 * [Bluetooth Mesh 简介](https://blog.bluetooth.com/introducing-bluetooth-mesh-networking)
 
 * [Bluetooth Mesh 协议规范](https://www.bluetooth.com/specifications/mesh-specifications?_ga=2.18257471.723078495.1501226603-93769939.1480503530)
 
-按照以下步骤快速搭建开发环境、编译运行简单的 mesh 示例。
+更多关于 nRF5 SDK for Mesh 介绍, 可以前往 [nordicsemi.com](https://www.nordicsemi.com/en/DocLib/Content/SDK_Doc/Mesh_SDK/v3-0-0/index)。
 
-### 安装 Mesh 工具链
+本文档主要介绍如何快速搭建开发环境、编译运行 Bluetooth Mesh 示例。
 
-在开始编译之前，需要安装 `CMake`、`GNU Arm Toolchain`、`ninja` 工具。这里以 macOS 系统为例，其他系统方法大同小异，可以自行摸索。
+## 安装 Mesh 工具链
 
-#### CMake
+在开始编译之前，需要安装 `CMake`、`GNU Arm Toolchain`、`ninja` 工具。这里分别介绍在 [macOS](#macos)、[Windows](#windows)、[Linux](#linux) 系统上安装相关工具。
 
-[CMake](https://cmake.org/) 是个一个开源的跨平台自动化建构系统，用来管理软件建置的程序，并不相依于某特定编译器。并可支持多层目录、多个应用程序与多个库。 它用配置文件控制建构过程的方式和 Unix 的 `make` 相似，只是 CMake 的配置文件取名为 `CMakeLists.txt` 。
+### macOS
 
-编译 Mesh 协议栈需要 `3.6` 及以上版本 CMake，在 macOS 系统可使用 `brew` 命令进行安装：
+1. 使用 `brew` 命令安装 [CMake](https://cmake.org/) and [Ninja](https://ninja-build.org/)：
 
-``` sh
-$ brew install cmake
-```
+    ``` sh
+    brew install cmake ninja
+    ```
 
-#### GNU Arm Embedded Toolchain
+2. 下载并安装 [GNU ARM Embedded Toolchain](https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads). 建议使用 `6-2017-q2-update` 版本，然后将工具链的目录添加到系统环境变量中：
 
-GNU Arm Embedded Toolchain 是 Arm 公司提供的 GNU 开源工具链，集成 GCC 交叉编译器、标准库以及其他实用工具，使开发者能够轻松开发基于 Arm Cortex-M 和 Cortex-R 的软件。该工具支持跨平台，可以运行在 Windows，Linux 和 macOS 平台上。
+    ``` sh
+    # 在 ~/.bash_profile 文件中添加以下命令：
+    export PATH="<path to install directory>/gcc-arm-none-eabi-6-2017-q2-update/bin:${PATH}"
+    ```
 
-你可以通过以下链接下载该工具链：
+3. 验证 `arm-none-eabi-gcc` 是否配置正确：
 
-<a href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads"><button data-md-color-primary="marsala">下载工具链</button></a>
+    ``` sh
+    arm-none-eabi-gcc --version
+    ```
 
+4. 为方便后续烧录固件，还需要安装 [nRF5x Command Line Tools](https://www.nordicsemi.com/DocLib/Content/User_Guides/nrf5x_cltools/latest/UG/cltools/nrf5x_installation) 和 [pyOCD](https://github.com/mbedmicro/pyOCD#installing)。
 
-下载、安装 `6-2017-q2-update` 版本，并将工具链的目录添加到系统环境变量中：
+### Windows
 
-``` sh
-# in ~/.bash_profile, add the following script
-export PATH="<path to install directory>/gcc-arm-none-eabi-6-2017-q2-update/bin:${PATH}"
-```
+在 Windows 系统上最简单的方法是使用 Windows 包管理器 [Chocolatey](https://chocolatey.org/)。
 
-可通过以下命令验证是否安装成功：
+1. 按照 [Chocolatey 安装页面](https://chocolatey.org/install) 介绍安装 **Chocolatey**
+2. 以管理员身份运行命令行工具(`cmd.exe`)
 
-``` sh
-$ arm-none-eabi-gcc --version
-```
+3. 为避免每安装一个程序都需要单独确认一遍，可使能 `allowGlobalConfirmation`：
 
-#### Ninja
+    ``` sh
+    choco feature enable -n allowGlobalConfirmation
+    ```
 
-[Ninja](https://ninja-build.org/) 是一个小巧而高效的编译工具，相比于 `make`，Ninja 编译速度更快、更加灵活。
+4. 安装 **CMake**：
 
-在 macOS 系统可使用 `brew` 命令安装 `Ninja`：
+    ``` sh
+    choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
+    ```
 
-``` sh
-$ brew install ninja
-```
+5. 安装其他工具，安装完成后关闭命令行工具：
 
-### 编译 Mesh 协议栈和示例
+    ``` sh
+    choco install git python ninja
+    ```
 
-#### 下载 SDKs
+6. 下载并安装 [GNU ARM Embedded Toolchain](https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads)。建议使用 `6-2017-q2-update` 版本，然后将工具链的目录添加到系统环境变量中
 
-`nRF5 SDK for Mesh` 需要配合 `nRF5 SDK` 一起编译，可通过以下链接下载这两个 SDK：
+7. 为方便后续烧录固件，还需要安装 [nRF5x Command Line Tools](https://www.nordicsemi.com/DocLib/Content/User_Guides/nrf5x_cltools/latest/UG/cltools/nrf5x_installation) 和 [pyOCD](https://github.com/mbedmicro/pyOCD#installing)。
 
-* [nRF5 SDK](http://www.nordicsemi.com/eng/nordic/Products/nRF5-SDK/nRF5-SDK-zip/59011)
-* [nRF5 SDK for Mesh](http://www.nordicsemi.com/eng/nordic/Products/nRF5-SDK-for-Mesh/nRF5-SDK-for-Mesh/62377)
+### Linux
 
-将这两个 SDK 解压到同一工作目录：
+这里以 **Unbuntu** 为例介绍如何配置开发环境，其他 Linux 发行版与此类似。
 
-``` sh
-.
-├── nrf5_SDK_for_Mesh_v2.0.1_src/
-└── nRF5_SDK_15.0.0_a53641a/
-```
+1. 确认系统已经更新完成：
 
-#### 添加 nRF52840-MDK 支持
+    ``` sh
+    sudo apt-get update
+    sudo apt-get upgrade
+    ```
 
-为了支持 nRF52840-MDK 硬件，你需要在 `nRF5_SDK_15.0.0_a53641a/components/boards/` 目录创建一个名为 `custom_board.h` 的配置文件，具体配置如下（可以使用 `pca10056.h` 作为模板）：
+2. 使用 `apt-get` 安装以下工具：
 
+    ``` sh
+    sudo apt-get install --no-install-recommends git cmake ninja-build python3-pip
+    ```
 
-``` c
-#ifndef CUSTOM_BOARD_H
-#define CUSTOM_BOARD_H
+3. 下载并安装 [GNU ARM Embedded Toolchain](https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads). 建议使用 `6-2017-q2-update` 版本，然后将工具链的目录添加到系统环境变量中
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "nrf_gpio.h"
-
-// LEDs definitions for nRF52840-MDK
-#define LEDS_NUMBER    3
-
-#define LED_1          NRF_GPIO_PIN_MAP(0,22)
-#define LED_2          NRF_GPIO_PIN_MAP(0,23)
-#define LED_3          NRF_GPIO_PIN_MAP(0,24)
-#define LED_START      LED_1
-#define LED_STOP       LED_3
-
-#define LEDS_ACTIVE_STATE 0
-
-#define LEDS_LIST { LED_1, LED_2, LED_3 }
-
-#define LEDS_INV_MASK  LEDS_MASK
-
-#define BSP_LED_0      22
-#define BSP_LED_1      23
-#define BSP_LED_2      24
-#define BSP_LED_3      25   // not on the board
-
-#define BUTTONS_NUMBER 1
-
-#define BUTTON_1       NRF_GPIO_PIN_MAP(1,0)
-#define BUTTON_PULL    NRF_GPIO_PIN_PULLUP
-
-#define BUTTONS_ACTIVE_STATE 0
-
-#define BUTTONS_LIST { BUTTON_1 }
-
-#define BSP_BUTTON_0   BUTTON_1
+4. 为方便后续烧录固件，还需要安装 [nRF5x Command Line Tools](https://www.nordicsemi.com/DocLib/Content/User_Guides/nrf5x_cltools/latest/UG/cltools/nrf5x_installation) 和 [pyOCD](https://github.com/mbedmicro/pyOCD#installing)。
 
 
-#define RX_PIN_NUMBER  19
-#define TX_PIN_NUMBER  20
-#define CTS_PIN_NUMBER 7  // not used
-#define RTS_PIN_NUMBER 5  // not used
-#define HWFC           false
+## 克隆源码仓库
 
-#define BSP_QSPI_SCK_PIN   NRF_GPIO_PIN_MAP(1,3)
-#define BSP_QSPI_CSN_PIN   NRF_GPIO_PIN_MAP(1,6)
-#define BSP_QSPI_IO0_PIN   NRF_GPIO_PIN_MAP(1,5)
-#define BSP_QSPI_IO1_PIN   NRF_GPIO_PIN_MAP(1,4)
-#define BSP_QSPI_IO2_PIN   NRF_GPIO_PIN_MAP(1,2)
-#define BSP_QSPI_IO3_PIN   NRF_GPIO_PIN_MAP(1,1)
-
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif // CUSTOM_BOARD_H
-```
-
-然后创建一个 CMake 文件 `nrf52840_mdk.cmake`，该文件位于  `nrf5_SDK_for_Mesh_v2.0.1_src/CMake/board/`，具体内容如下：
+从 GitHub 克隆 `nrf52840-mdk` 仓库：
 
 ``` sh
-# nrf52840_mdk.cmake
-set(nrf52840_mdk_DEFINES
-    -DBOARD_CUSTOM
-    -DCONFIG_GPIO_AS_PINRESET)
-
-set(nrf52840_mdk_INCLUDE_DIRS
-    "${SDK_ROOT}/components/boards")
+git clone ---recursive https://github.com/makerdiary/nrf52840-mdk.git
 ```
 
-然后修改 `nrf5_SDK_for_Mesh_v2.0.1_src/CMake/Board.cmake` 文件，指定 nRF52840-MDK 为 `nrf52840_xxAA` 平台默认的板子：
+如果已经克隆过该仓库，可使用以下命令更新 `nRF5-SDK-for-Mesh` 子模块：
 
 ``` sh
-...
-
-elseif (PLATFORM STREQUAL "nrf52840_xxAA")
-    set(BOARD "pca10056" CACHE STRING "Board to build examples for.")
-    set_property(CACHE BOARD PROPERTY STRINGS "pca10056" "nrf52840_mdk")
+git submodule update --init
 ```
 
-#### 使用 Cmake 构建
+`nRF5 SDK for Mesh` 需要配合 `nRF5 SDK` 一起编译，可参考以下链接进行安装：
 
-这里最简单的方法是在 `nrf5_SDK_for_Mesh_v2.0.1_src` 根目录创建 `build` 文件夹，用来存放 `ninja` 生成的文件：
+<a href="https://github.com/makerdiary/nrf52840-mdk/tree/master/nrf_sdks#installing-the-nrf5-sdk"><button data-md-color-primary="marsala">安装 nRF5 SDK</button></a>
+
+## 编译 Mesh 协议栈和示例
+
+现在你可以开始编译 Mesh 协议栈和相关示例，最简单的方法是在 `nrf_sdks/nRF5-SDK-for-Mesh` 目录创建 `build` 文件夹，用来存放 ninja 生成的文件：
 
 ``` sh
-nrf5_SDK_for_Mesh_v2.0.1_src $ mkdir build
-nrf5_SDK_for_Mesh_v2.0.1_src $ cd build
+nRF5-SDK-for-Mesh$ mkdir build && cd build
 ```
 
 接着使用 `cmake` 工具来编译，你需要指定 `TOOLCHAIN`、`PLATFORM`、`BOARD` 参数，系统会自动确定可用的 `SOFTDEVICE`：
 
 ``` sh
-build $ cmake -G Ninja -DTOOLCHAIN=gccarmemb -DPLATFORM=nrf52840_xxAA -DBOARD=nrf52840_mdk ..
+cmake -G Ninja -DTOOLCHAIN=gccarmemb -DPLATFORM=nrf52840_xxAA -DBOARD=nrf52840_mdk -DFLASHER=pyocd ..
 ```
 
-生成编译文件后便可使用 `ninja` 命令进行编译所有示例和库：
+生成编译文件后便可使用 `ninja <target>` 命令进行编译，这里以 `my_light_switch_client` 为例：
 
 ``` sh
-build $ ninja
+ninja my_light_switch_client_nrf52840_xxAA_s140_6.1.0
 ```
 
-![](../../mesh/images/build-mesh-with-cmake.png)
+![](../../mesh/images/generating_build_files.png)
 
-### 下载运行 mesh 示例
+## 下载运行 mesh 示例
 
-Cmake 生成的固件不包含 SoftDevice，因此需要先下载对应的 SoftDevice。SoftDevice 的版本可以从前面生成的 `.hex` 文件中获得，例如：`light_switch_client_nrf52840_xxAA_s140_6.0.0.hex` 对应的 SoftDevice 是 `s140_nrf52_6.0.0_softdevice.hex`。 运行以下命令下载：
+连接 nRF52840-MDK 开发板，使用 `ninja flash_<your target>` 命令可以自动下载运行示例：
 
 ``` sh
-$ pyocd-flashtool -d debug -t nrf52 -se s140_nrf52_6.0.0_softdevice.hex
+ninja flash_my_light_switch_client_nrf52840_xxAA_s140_6.1.0
 ```
 
-接着便可下载应用程序：
+![](../../mesh/images/flashing_my_light_switch_client.png)
+
+使用串口调试工具（如：[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/) 或者 [screen](https://www.gnu.org/software/screen/manual/screen.html)）打印调试信息：
 
 ``` sh
-$ pyocd-flashtool -d debug -t nrf52 -se ./build/examples/light_switch/client/light_switch_client_nrf52840_xxAA_s140_6.0.0.hex
+screen /dev/cu.usbmodem141102 115200
 ```
+
+![](../../mesh/images/my_light_switch_client_log_info.png)
+
+以同样的步骤在其他 nRF52840-MDK 开发板上下载 **Server** 示例：
+
+``` sh
+ninja flash_my_light_switch_server_nrf52840_xxAA_s140_6.1.0
+```
+
+至此，你可以使用 [nRF Mesh mobile app](https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Mesh)([iOS](https://itunes.apple.com/us/app/nrf-mesh/id1380726771?mt=8)/[Android](https://play.google.com/store/apps/details?id=no.nordicsemi.android.nrfmeshprovisioner)) 来建立 Bluetooth Mesh 网络：
+
+![](../../mesh/images/nrf-mesh-app-screenshot.jpg)
+
 
 ## 如何创建新项目
 
 你也可以从头创建新项目，最简单的方式是：
 
-1. 从 `examples` 目录复制现有的示例，例如：复制 `examples/beaconing`，并改为 `examples/my_app`；
+1. 从 `examples` 目录复制现有的示例，例如：复制 `examples/my_beaconing`，并改为 `examples/my_app`；
 2. 修改 `examples/CMakeLists.txt` 文件，添加 `add_subdirectory("my_app")` 命令；
 3. 修改 `examples/my_app/CMakeLists.txt` 文件，修改 target：`set(target "my_app")`；
 4. 生成编译文件：
-	``` sh
-	nrf5_SDK_for_Mesh_v2.0.1_src $ mkdir build
-	nrf5_SDK_for_Mesh_v2.0.1_src $ cd build
-	build $ cmake -G Ninja -DTOOLCHAIN=gccarmemb -DPLATFORM=nrf52840_xxAA -DBOARD=nrf52840_mdk ..
-	```
+
+    ``` sh
+    nRF5-SDK-for-Mesh $ mkdir build && cd build
+    build $ cmake -G Ninja -DTOOLCHAIN=gccarmemb -DPLATFORM=nrf52840_xxAA -DBOARD=nrf52840_mdk -DFLASHER=pyocd ..
+    ```
+
 5. 编译新的目标示例：
-	``` sh
-	build $ ninja my_app
-	```
+    ``` sh
+    ninja my_app
+    ```
+
+6. 下载固件：
+
+    ``` sh
+    ninja flash_my_app
+    ```
 
 ## 更多示例
 
@@ -238,11 +200,10 @@ $ pyocd-flashtool -d debug -t nrf52 -se ./build/examples/light_switch/client/lig
 
 ## 参考资源
 
-* [Nordic nRF5 SDK for Mesh](https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF5-SDK-for-Mesh)
-
-* [Nordic Semiconductor Infocenter](http://infocenter.nordicsemi.com/index.jsp)
-
-* [makerdiary/nrf52840-mdk](https://github.com/makerdiary/nrf52840-mdk)
+* [Nordic nRF5 SDK for Mesh 文档](https://www.nordicsemi.com/en/DocLib/Content/SDK_Doc/Mesh_SDK/v3-0-0/index)
+* [nRF5-SDK-for-Mesh 仓库](https://github.com/makerdiary/nRF5-SDK-for-Mesh)
+* [Bluetooth Mesh 基本概念](https://www.nordicsemi.com/en/DocLib/Content/SDK_Doc/Mesh_SDK/v3-0-0/md_doc_introduction_basic_concepts)
+* [nRF5 SDK for Mesh 架构](https://www.nordicsemi.com/en/DocLib/Content/SDK_Doc/Mesh_SDK/v3-0-0/md_doc_introduction_basic_architecture)
 
 ## 问题反馈
 
