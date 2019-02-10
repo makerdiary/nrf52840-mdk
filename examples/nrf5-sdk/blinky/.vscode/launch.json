@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "pyocd",
+            "cwd": "${workspaceRoot}",
+            "executable": "./armgcc/_build/nrf52840_xxaa.out",
+            "name": "Debug (pyOCD)",
+            "device": "nrf52840_xxaa",
+            "targetId": "nrf52",
+            "boardId": ""
+        }
+    ]
+}
