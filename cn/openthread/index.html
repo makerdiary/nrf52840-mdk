@@ -2,7 +2,7 @@
 
 
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="no-js">
   <head>
     
@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.7.3">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
     
     
       
@@ -46,22 +46,56 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.8d40d89b.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.c61db26e.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.3b80946a.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
       
     
     
-      <script src="../../assets/javascripts/modernizr.20ef595d.js"></script>
+      <script src="../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
     
     
-      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-54344624-2", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
     
     
   </head>
@@ -75,7 +109,7 @@
         
         
           <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
-    viewBox="0 0 416 448" id="github">
+    viewBox="0 0 416 448" id="__github">
   <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
         8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
         18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
@@ -95,9 +129,9 @@
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
       <a href="#openthread-nest-thread" tabindex="1" class="md-skip">
         Skip to content
@@ -115,33 +149,30 @@
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
-            
-              <span class="md-header-nav__topic">
-                nRF52840-MDK Documentation
-              </span>
-              <span class="md-header-nav__topic">
-                OpenThread
-              </span>
-            
+            <span class="md-header-nav__topic">
+              nRF52840-MDK Documentation
+            </span>
+            <span class="md-header-nav__topic">
+              OpenThread
+            </span>
           
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
-            
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="search"></label>
+  <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="search"></label>
+      <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
       </button>
@@ -158,7 +189,6 @@
     </div>
   </div>
 </div>
-          
         
       </div>
       
@@ -169,20 +199,18 @@
 
   
 
-
-  <a href="https://github.com/makerdiary/nrf52840-mdk" title="Go to repository" class="md-source" data-md-source="github">
-    
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#github" width="24" height="24"></use>
-        </svg>
-      </div>
-    
-    <div class="md-source__repository">
-      makerdiary/nrf52840-mdk
+<a href="https://github.com/makerdiary/nrf52840-mdk" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
     </div>
-  </a>
-
+  
+  <div class="md-source__repository">
+    makerdiary/nrf52840-mdk
+  </div>
+</a>
           </div>
         </div>
       
@@ -195,63 +223,6 @@
         
       
       
-        
-
-  
-
-<nav class="md-tabs md-tabs--active" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  <li class="md-tabs__item">
-    
-      <a href="../.." title="Introduction" class="md-tabs__link">
-        Introduction
-      </a>
-    
-  </li>
-
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="../" title="中文文档" class="md-tabs__link md-tabs__link--active">
-          中文文档
-        </a>
-      
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-      
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -260,12 +231,12 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://wiki.makerdiary.com/nrf52840-mdk/" title="nRF52840-MDK Documentation" class="md-nav__button md-logo">
       
         <img src="../../images/logo.svg" width="48" height="48">
       
-    </span>
+    </a>
     nRF52840-MDK Documentation
   </label>
   
@@ -275,20 +246,18 @@
 
   
 
-
-  <a href="https://github.com/makerdiary/nrf52840-mdk" title="Go to repository" class="md-source" data-md-source="github">
-    
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#github" width="24" height="24"></use>
-        </svg>
-      </div>
-    
-    <div class="md-source__repository">
-      makerdiary/nrf52840-mdk
+<a href="https://github.com/makerdiary/nrf52840-mdk" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
     </div>
-  </a>
-
+  
+  <div class="md-source__repository">
+    makerdiary/nrf52840-mdk
+  </div>
+</a>
     </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -515,12 +484,12 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         OpenThread
       </label>
     
@@ -535,7 +504,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -829,7 +798,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -1024,7 +993,7 @@
                 
                 
                 <h1 id="openthread-nest-thread">OpenThread <br><small>Nest 发布的 Thread® 的开源实现方案</small><a class="headerlink" href="#openthread-nest-thread" title="Permanent link">&para;</a></h1>
-<p><a href="https://github.com/openthread/openthread"><img alt="" src="./../../openthread/images/openthread_logo.png" /></a></p>
+<p><a href="https://github.com/openthread/openthread"><img alt="" src="../../openthread/images/openthread_logo.png" /></a></p>
 <h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p><a href="https://openthread.io/">OpenThread</a> 是 <a href="https://nest.com/">Nest Labs</a> 发布的 <a href="http://threadgroup.org/">Thread®</a> 的开源实现方案。OpenThread 已经广泛应用于 Nest 产品中，可以帮助开发者快速开发智能家居产品。</p>
 <p><a href="http://threadgroup.org/ThreadSpec">Thread®</a> 是一种为家庭和楼宇自动化而建立的开放式标准，以实现可靠、具有成本效益和低功耗的通信：</p>
@@ -1034,9 +1003,9 @@
 <li>支持使用智能手机轻松调试</li>
 <li>支持器件到器件、器件到移动设备和器件到云的无线通信</li>
 </ul>
-<p><img alt="" src="./../../openthread/images/openthread_intro.jpg" /></p>
+<p><img alt="" src="../../openthread/images/openthread_intro.jpg" /></p>
 <p>本章节将介绍如何使用 nRF52840-MDK 创建一个 Thread 网络，并在不同节点间发送消息。</p>
-<p><img alt="" src="./../../openthread/images/nrf52840_mdk_openthread.jpg" /></p>
+<p><img alt="" src="../../openthread/images/nrf52840_mdk_openthread.jpg" /></p>
 <h2 id="_2">快速入门<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>在开发 OpenThread 应用之前，你需要安装一些开发工具。</p>
 <h3 id="arm-gnu-toolchain">安装 ARM GNU Toolchain<a class="headerlink" href="#arm-gnu-toolchain" title="Permanent link">&para;</a></h3>
@@ -1060,7 +1029,7 @@
 
 <div class="admonition note">
 <p class="admonition-title">提示</p>
-<p>如果安装 pyOCD 过程遇到问题，可以参考 “<a href="./../getting-started/#pyocd">使用 pyOCD 下载</a>” 部分。</p>
+<p>如果安装 pyOCD 过程遇到问题，可以参考 “<a href="../getting-started/#pyocd">使用 pyOCD 下载</a>” 部分。</p>
 </div>
 <h3 id="wpantund">安装 wpantund<a class="headerlink" href="#wpantund" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/openthread/wpantund">wpantund</a> 是运行在类 Unix 操作系统用户空间的网络接口驱动程序，为低功耗无线协处理器（NCP）提供本地 IPv6 网络接口，由 Nest Labs 开发和维护。</p>
@@ -1142,7 +1111,7 @@ WARNING:root:Unsupported board found <span class="m">1026</span>
 <div class="codehilite"><pre><span></span>$ pyocd-flashtool -t nrf52 -b 10260000083ab20300000000000000000000000097969902 -ce ot-ncp-ftd.hex
 </pre></div>
 
-<p><img alt="" src="./../../openthread/images/flash_ot-ncp-ftd_hex.png" /></p>
+<p><img alt="" src="../../openthread/images/flash_ot-ncp-ftd_hex.png" /></p>
 <div class="admonition tip">
 <p class="admonition-title">提示</p>
 <p>将该板子标记为 <strong>NCP</strong>，以避免与后面其他角色的设备混淆。</p>
@@ -1182,7 +1151,7 @@ wpanctl:utun7&gt;
 
 <h3 id="ncp_1">验证 NCP 是否工作<a class="headerlink" href="#ncp_1" title="Permanent link">&para;</a></h3>
 <p>使用 <code>status</code> 命令验证 NCP 是否正常工作：</p>
-<p><img alt="" src="./../../openthread/images/verify_ncp_build.png" /></p>
+<p><img alt="" src="../../openthread/images/verify_ncp_build.png" /></p>
 <h2 id="ftd">设置 FTD 设备<a class="headerlink" href="#ftd" title="Permanent link">&para;</a></h2>
 <p>另外两个 nRF52840-MDK 将被配置为 FTD 设备（Full Thread Devices），这类设备上运行 OpenThread CLI 固件，你可以直接通过设备的串口对其进行配置管理。</p>
 <p>这两个设备一个配置为 <code>Commissioner</code> 角色，用于在 Thread 网络中认证和许可其他设备；另外一个配置为 <code>Joiner</code> 角色，可以被 <code>Commissioner</code> 安全地认证和许可。</p>
@@ -1374,7 +1343,7 @@ Done
 </pre></div>
 
 <p>至此，我们已经建立了具有两个节点的 Thread 网络，其网络拓扑如下：</p>
-<p><img alt="" src="./../../openthread/images/ncp_ftd_topology.png" /></p>
+<p><img alt="" src="../../openthread/images/ncp_ftd_topology.png" /></p>
 <h2 id="ftd-joiner_1">许可 FTD Joiner<a class="headerlink" href="#ftd-joiner_1" title="Permanent link">&para;</a></h2>
 <p>接下来，我们让 <strong>FTD Joiner</strong> 加入到 <code>makerdiary</code> 网络中。</p>
 <p>先在 <strong>FTD Joiner</strong> 中扫描网络：</p>
@@ -1470,7 +1439,7 @@ Done
 </pre></div>
 
 <p>这时，我们得到的网络拓扑如下图：</p>
-<p><img alt="" src="./../../openthread/images/thread_topology_updated.png" /></p>
+<p><img alt="" src="../../openthread/images/thread_topology_updated.png" /></p>
 <h2 id="udp">发送 UDP 消息<a class="headerlink" href="#udp" title="Permanent link">&para;</a></h2>
 <p>成功创建 Thread 网络后，我们便可以使用 UDP 协议在节点设备之间传输消息。</p>
 <p>获取 <strong>FTD Joiner</strong> 的 Mesh-Local EID 地址：</p>
@@ -1605,20 +1574,18 @@ Done
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2018 <a href="https://makerdiary.com">makerdiary.com</a>
+            Copyright &copy; 2019 <a href="https://makerdiary.com">makerdiary.com</a>
           </div>
         
         powered by
-        <a href="http://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
-        
   <div class="md-footer-social">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
       <a href="https://community.makerdiary.com" class="md-footer-social__link fa fa-comments"></a>
     
@@ -1632,21 +1599,15 @@ Done
     
   </div>
 
-      
     </div>
   </div>
 </footer>
       
     </div>
     
-      <script src="../../assets/javascripts/application.daa92ae3.js"></script>
+      <script src="../../assets/javascripts/application.24c73612.js"></script>
       
-      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
-      
-    
-    
-      
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-54344624-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
     
   </body>
