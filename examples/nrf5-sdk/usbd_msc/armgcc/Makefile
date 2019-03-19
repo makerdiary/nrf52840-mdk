@@ -211,19 +211,20 @@ include $(TEMPLATE_PATH)/Makefile.common
 
 $(foreach target, $(TARGETS), $(call define_target, $(target)))
 
-.PHONY: flash erase
+.PHONY: flash erase copy
 
 # Flash the program
 flash: default
 	@echo Flashing: $(OUTPUT_DIRECTORY)/nrf52840_xxaa.hex
-	pyocd-flashtool -t nrf52 -se $(OUTPUT_DIRECTORY)/nrf52840_xxaa.hex
+	pyocd flash -t nrf52840 $(OUTPUT_DIRECTORY)/nrf52840_xxaa.hex
 
+# Erase chip
 erase:
-	pyocd-flashtool -t nrf52 -ce
+	pyocd erase -t nrf52840 --chip
 
-# Generate hex file
-release: default
-	@echo Generating hex file...
+# Copy firmware to hex folder
+copy: default
+	@echo Copying: $(PROJECT_NAME).hex
 	cp $(OUTPUT_DIRECTORY)/nrf52840_xxaa.hex $(PROJ_DIR)/hex/$(PROJECT_NAME).hex
 
 
