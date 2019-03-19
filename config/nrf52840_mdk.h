@@ -55,30 +55,19 @@ extern "C" {
 #define BSP_LED_1      23
 #define BSP_LED_2      24
 
-#define BUTTON_0               NRF_GPIO_PIN_MAP(1,0)  // on board
-#define BUTTON_0_PULL          NRF_GPIO_PIN_PULLUP
-#define BUTTON_0_ACTIVE_STATE  0
+#define BUTTONS_NUMBER         1
+#define BUTTON_1               NRF_GPIO_PIN_MAP(1,0)  // on board
+#define BUTTON_PULL            NRF_GPIO_PIN_PULLUP
+#define BUTTONS_ACTIVE_STATE   0
 
-#define BUTTONS_NUMBER 4
-#define BUTTON_1       27
-#define BUTTON_2       29
-#define BUTTON_3       31    
-#define BUTTON_4       3
-#define BUTTON_PULL    NRF_GPIO_PIN_PULLDOWN
-
-#define BUTTONS_ACTIVE_STATE 1
-
-#define BUTTONS_LIST { BUTTON_1, BUTTON_2, BUTTON_3, BUTTON_4 }
+#define BUTTONS_LIST { BUTTON_1 }
 
 #define BSP_BUTTON_0   BUTTON_1
-#define BSP_BUTTON_1   BUTTON_2
-#define BSP_BUTTON_2   BUTTON_3
-#define BSP_BUTTON_3   BUTTON_4
 
 #define RX_PIN_NUMBER  19
 #define TX_PIN_NUMBER  20
-#define CTS_PIN_NUMBER 7
-#define RTS_PIN_NUMBER 5
+#define CTS_PIN_NUMBER 0xFFFFFFFF  //NC
+#define RTS_PIN_NUMBER 0xFFFFFFFF  //NC
 #define HWFC           false
 
 #define BSP_QSPI_SCK_PIN   NRF_GPIO_PIN_MAP(1,3)
