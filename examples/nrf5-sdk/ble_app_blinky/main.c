@@ -72,7 +72,7 @@
 #define ADVERTISING_LED                 BSP_BOARD_LED_0                         /**< Is on when device is advertising. */
 #define CONNECTED_LED                   BSP_BOARD_LED_1                         /**< Is on when device has connected. */
 #define LEDBUTTON_LED                   BSP_BOARD_LED_2                         /**< LED to be toggled with the help of the LED Button Service. */
-#define LEDBUTTON_BUTTON                BUTTON_0                                /**< Button that will trigger the notification event with the LED Button Service */
+#define LEDBUTTON_BUTTON                BUTTON_1                                /**< Button that will trigger the notification event with the LED Button Service */
 
 #define DEVICE_NAME                     "nRF52840-MDK"                          /**< Name of device. Will be included in the advertising data. */
 
@@ -519,7 +519,7 @@ static void buttons_init(void)
     //The array must be static because a pointer to it will be saved in the button handler module.
     static app_button_cfg_t buttons[] =
     {
-        {LEDBUTTON_BUTTON, false, BUTTON_0_PULL, button_event_handler}
+        {LEDBUTTON_BUTTON, false, BUTTON_PULL, button_event_handler}
     };
 
     err_code = app_button_init(buttons, ARRAY_SIZE(buttons),
@@ -580,6 +580,9 @@ int main(void)
     // Start execution.
     NRF_LOG_INFO("Blinky example started.");
     advertising_start();
+
+    // Set TX power
+    APP_ERROR_CHECK(sd_ble_gap_tx_power_set(BLE_GAP_TX_POWER_ROLE_ADV, 0, 8));
 
     // Enter main loop.
     for (;;)
