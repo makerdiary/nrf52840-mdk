@@ -93,6 +93,9 @@ nRF52840-MDK is available on the following channels (click to go directly to the
 
 [![Tindie](docs/images/tindie-logo.png)](https://www.tindie.com/products/Zelin/nrf52840-mdk-iot-development-kit/)
 
+[![Taobao](docs/images/taobao-logo.png)](https://item.taobao.com/item.htm?spm=a1z10.5-c-s.w4002-18605444730.14.15aa65b7vxCKjN&id=573469773075)
+
+
 ## Contributing
 
 We would love for you to contribute to this project and help make it even better than it is today! See our [Contributing Guidelines](https://wiki.makerdiary.com/nrf52840-mdk/CONTRIBUTING) for more information.

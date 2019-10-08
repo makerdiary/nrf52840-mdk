@@ -12,6 +12,8 @@ nRF52840-MDK is available on the following channels (click to go directly to the
 
 [![Tindie](images/tindie-logo.png)](https://www.tindie.com/products/Zelin/nrf52840-mdk-iot-development-kit/)
 
+[![Taobao](images/taobao-logo.png)](https://item.taobao.com/item.htm?spm=a1z10.5-c-s.w4002-18605444730.14.15aa65b7vxCKjN&id=573469773075)
+
 ## Bulk & Customization
 
 We are ready to customize our electronics and firmware to better meet your solution's needs. Many of our platforms are prepared for customization.

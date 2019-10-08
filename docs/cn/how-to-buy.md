@@ -4,9 +4,9 @@
 
 你可以通过以下购买渠道获得 nRF52840-MDK 相关硬件：
 
-<button data-md-color-primary="green"><i class="fa fa-wechat"></i> 微信-造物小店 <p></p> <img src="../../images/westore_qrcode.jpg"></button>
+[![Taobao](../../images/taobao-logo.png)](https://item.taobao.com/item.htm?spm=a1z10.5-c-s.w4002-18605444730.14.15aa65b7vxCKjN&id=573469773075)
 
-<a href="https://zaowubang.taobao.com"><button data-md-color-primary="deep-orange"><i class="fa fa-shopping-cart"></i> 淘宝-造物小店</button></a>
+<button data-md-color-primary="green"><i class="fa fa-wechat"></i> 微信-造物小店 <p></p> <img src="../../images/wxzwxd-logo.png"></button>
 
 
 ## 批量&定制化
