@@ -2,7 +2,7 @@
 
 Download the SDK package from [www.nordicsemi.com](https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK/).
 
-The latest version is `15.2.0`, it can be downloaded directly here: [nRF5_SDK_v15.2.0_9412b96](https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK/Download#infotabs)
+The examples are based on nRF5 SDK 15.2.0, it can be downloaded directly here: [nRF5_SDK_v15.2.0_9412b96](https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK/Download#infotabs)
 
 Extract the zip file into this directory. This should give you the following folder structure:
 
@@ -19,6 +19,8 @@ Extract the zip file into this directory. This should give you the following fol
 │   └── nRF5_SDK_v15.2.0_9412b96
 └── tools
 ```
+
+If you have `wget` and `unzip`, you can run `./get.sh` to download and extract the sdk.
 
 Config the toolchain path in `makefile.windows` or `makefile.posix` depending on platform you are using. That is, the `.posix` should be edited if your are working on either Linux or macOS. These files are located in:
 
